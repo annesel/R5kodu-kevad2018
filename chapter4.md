@@ -1,6 +1,6 @@
 ---
 title       : Kuupäevad
-description : Insert the chapter description here
+description : Toimingud kuupäevadega
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:2e5c28c998
 ## Date-tüüpi muutuja loomine

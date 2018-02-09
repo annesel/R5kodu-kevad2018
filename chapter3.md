@@ -3,7 +3,7 @@ title       : Sõnetöötlus
 description : Töö tekstiväärtustega
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d68116f086
-## Teksti esinemine
+## Teksti esinemise kontroll
 
 Töölaual on andmestik `tekstid`, mis sisaldab tekstilõike ajalehe Postimees artiklitest. Kõigil lõikudel on ka emotsionaalne hinnang st kas lugejad on hinnanud lõigu negatiivseks, postiivseks, neutraalseks või vastuoluliseks.
 
