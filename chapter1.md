@@ -3,7 +3,7 @@ title       : Pakett dplyr
 description : Paketi dplyr kasutamine
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:818a1077ad
-## Mitmele tunnusele kirjeldavate karakteristikute leidmine 2
+## Mitmele tunnusele kirjeldavate karakteristikute leidmine 
 
 
 Lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid prefiksitega `_at`, `_if` ja `_all` juhuks kui funktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
@@ -47,7 +47,8 @@ B1 <- __________________________________
 # Ülesanne 2: Täienda koodi
 library(____________)
 tabel <- B1 %>% __________________  %>%  _____________(___________)  %>%  ______________(.funs = c("mean", "sd", "min", "max"))
-tabel[order(tabel$variable),]
+arrange(tabel, variable)
+ 
 
 ```
 
@@ -65,7 +66,7 @@ B1 <-  B %>% select(starts_with("test"))
 # Ülesanne 2: Täienda koodi
 library(reshape2)
 tabel <- B1 %>% melt()  %>%  group_by(variable)  %>%  summarise_all(.funs = c("mean", "sd", "min", "max"))
-tabel[order(tabel$variable),]
+arrange(tabel, variable)
 ```
 
 *** =sct
