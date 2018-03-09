@@ -236,7 +236,9 @@ test_function("summarise",
               incorrect_msg = paste("Funktsiooni `summarise()`  ",  c(" rakendatakse  valele andmestikule.")   ))
  
 
- 
+
+test_pipe(num = 2, absent_msg = "Kasuta aheldamisoperaatorit `%>%`.", insuf_msg = "Kasuta aheldamisoperaatorit `%>%` vähemalt 2 korda.") 
+  
        
 test_data_frame("tabel",
                 columns = c("sugu", "elukoht",  "n",  "kesk.vanus", "kesk.kmi", "visiit.osak"),
@@ -254,6 +256,9 @@ test_object("madal",
             eval = TRUE,
             undefined_msg = "List `madal` on tekitamata.",
             incorrect_msg = "Listis `madal`  on mingi väärtus vale.")
+
+
+
 
 
 
@@ -468,7 +473,7 @@ success_msg("Ülesanne tehtud. Väga tubli!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:edea2d2fcc
 ## Teisenduse määramine mitmele tunnusele andmestikus
 
-Lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid sufiksitega `_at`, `_if` ja `_all` juhuks kui fuktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
+Nagu öeldud on lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid sufiksitega `_at`, `_if` ja `_all` juhuks kui fuktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
 
 
 
@@ -505,12 +510,12 @@ str(mass)
 str(antropo)
 
 # Ülesanne 1: teisenda faktorid tavaliseks tekstiks
-_________ <-  __________ %>%  mutate______(_________________)
+_________ <-  __________ %>% mutate______(.predicate = __________, .funs = __________)
 
 
 # Ülesanne 2: teisenda ühikud
 uus_funktsioon <- function(_____) ____________
-antropo_cm_kg <- _______  ____ mutate______(vars(-SEX), .funs = uus_funktsioon)
+antropo_cm_kg <- _______  ____  mutate______(.vars = vars(-SEX), .funs = uus_funktsioon)
 
 ```
 
@@ -521,12 +526,12 @@ str(mass)
 str(antropo)
 
 # Ülesanne 1: teisenda faktorid tavaliseks tekstiks
-mass_char <-  mass %>%  mutate_if(.predicate = is.factor, .funs = as.character)
+mass_char <-  mass %>% mutate_if(.predicate = is.factor, .funs = as.character)
 
 
 # Ülesanne 2: teisenda ühikud
 uus_funktsioon <- function(x) x/10
-antropo_cm_kg <- antropo  %>% mutate_at(vars(-SEX), .funs = uus_funktsioon)
+antropo_cm_kg <- antropo %>% mutate_at(.vars = vars(-SEX), .funs = uus_funktsioon)
 
 
 ```
@@ -572,18 +577,16 @@ test_function_definition("uus_funktsioon",
 
 
 test_function("mutate_at",
-              args = c(".tbl", 
-              #".vars", 
-              ".funs"), index = 1,
-              eval = c(TRUE,   TRUE),
+              args = c(".tbl", ".vars", ".funs"), index = 1,
+              eval = c(TRUE, TRUE,  TRUE),
               eq_condition = "equivalent",
-              not_called_msg = "Kasuta Esimeses ülesandes funktsiooni `mutate_at()`.",
-              args_not_specified_msg = c("Funktsiooni `mutate_at()` esimeseks argumendiks peab sattuma andmestik `mass`, st see saadetakse aheldamisega funktsiooni esimeseks argumendiks.", 
-                               # " Ära kustuta funktsiooni `mutate_at()` etteantud argumentide väärtusi.", 
+              not_called_msg = "Kasuta teises ülesandes funktsiooni `mutate_at()`.",
+              args_not_specified_msg = c("Funktsiooni `mutate_at()` esimeseks argumendiks peab sattuma andmestik `antropo`, st see saadetakse aheldamisega funktsiooni esimeseks argumendiks.", 
+                                " Ära kustuta funktsiooni `mutate_at()` etteantud argumentide väärtusi.", 
                                 " Ära kustuta funktsiooni `mutate_at()` etteantud argumentide väärtusi.") ,
               incorrect_msg = c("Funktsiooni `mutate_at()`   rakendatakse  valele andmestikule.", 
-              #"Ära muuda funktsiooni `mutate_at()at()` etteantud argumentide väärtusi.", 
-              "Ära muuda funktsiooni `mutate_at()` etteantud argumentide väärtusi, kirjapilti.")   )
+              "Ära muuda funktsiooni `mutate_at()` etteantud argumentide väärtusi.", 
+              "Ära muuda funktsiooni `mutate_at()` etteantud argumentide väärtusi või kirjapilti.")   )
 
 			  
 			  
