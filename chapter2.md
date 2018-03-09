@@ -94,7 +94,7 @@ test_function(name = "library",
 test_data_frame("tabel1", columns = c("kmi", "sirutus"),
             undefined_msg = "Andmetabel `tabel1` on defineerimata.",
             undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale."),
-            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
+            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused/sisu valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
 
 test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata")
 
@@ -115,7 +115,7 @@ test_student_typed(", by = list(sugu, elukoht)",  not_typed_msg = "Kontrolli, ka
 test_data_frame("tabel2", columns = c("sugu", "elukoht", "kesk.vanus", "kesk.pikkus"),
             undefined_msg = "Andmetabel `tabel2` on defineerimata.",
             undefined_cols_msg = paste("Andmestikus `tabel2` on mingi veerg puudu, võibolla on veeru nimi vale."),
-            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
+            incorrect_msg = "Andmetabelis `tabel2` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
 
 test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printimata")
 
