@@ -2,6 +2,77 @@
 title       : Pakett data.table
 description : Andmetöötluspaketi data.table kasutamine
 
+
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:62a4ef70a0
+## Ridade filtreerimine ja veergude valik/defineerimine
+
+Kui `DT` on *data.table* tüüpi andmetabel, siis paketi **data.table** põhisüntaksi kuju saab kirja panna järgnevalt
+```{r, eval = F}
+DT[i, j, by]
+```
+kus 
+
+- `i` määrab read/objektid, mida edasi kasutada
+- `j` määrab veerud, mis valitakse, uuendatakse või tekitatakse
+- `by` määrab vajadusel grupitunnuse `j` tehtavateks arvutustesse.
+
+Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
+
+ 
+
+
+
+
+*** =instructions
+- **Ülesanne 1** Aktiveeri pakett **data.table**.
+- **Ülesanne 2** Kasutades  **data.table** süntaksit, prindi ekraanile tabel, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus(tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). 
+- **Ülesanne 3** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus ja pikkus neile, kes on käinud arstivisiidil (tunnuse `visiit` v'äärtus on `TRUE`).
+
+*** =hint
+- Teises ülesadnes peab KMI väärtuse arvutama ja omistama veergu nimega `kmi`, teise tunnuse `sirutus` väärtustega mingit teisendus pole vaja teha. 
+
+*** =pre_exercise_code
+```{r}
+A0 <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
+A <- data.table::as.data.table(A0)
+rm(A0)
+
+```
+
+*** =sample_code
+```{r}
+# Ülesanne 1: aktiveeri pakett
+_______________________
+
+
+# Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
+A[______, ________]
+
+
+# Ülesanne 3: tee valik objektidest ja vali/arvuta tunnused
+A[_____,______, ________]
+
+
+```
+
+*** =solution
+```{r}
+# Ülesanne 1: aktiveeri pakett
+library(data.table)
+
+# Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
+A[vanus > 50 & kaal > 80, .(kmi = kaal/(kasv/100)^2 , sirutus )]
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:d4e4f82648
 ## Tunnuse tüübi teisendus, sagedustabeli leidmine.
 
@@ -20,7 +91,7 @@ Töölaual on andmestik `tekstid`, mis sisaldab tekstilõike ajalehe Postimees a
 
 Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
 
-
+Pakett **data.table** on juba aktiveeritud.
 
 *** =instructions
 - **Ülesanne 1** Kontrolli, kas andmestik on *data.table* tüüpi, kasutades funktsiooni `is.data.table()`. 
@@ -40,6 +111,7 @@ tekstid <- fread("http://kodu.ut.ee/~annes/R/tekstid.csv", nrow = 1000, encoding
 tekstid[, artikkel := NULL]
 n <-  (1:1000)[tekstid$loigunr == "None"]
 tekstid <- tekstid[-n, ]
+rm(n)
 ```
 
 *** =sample_code
@@ -132,3 +204,13 @@ success_msg("Väga tubli! Viimane ülesanne sai tehtud!")
 
 
 ```
+
+
+
+
+
+
+
+
+
+
