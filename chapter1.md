@@ -469,7 +469,7 @@ success_msg("Ülesanne tehtud. Väga tubli!")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:edea2d2fcc
-## Teisenduse määramine mitmele tunnusele andmestikus
+## Mitmele tunnusele teisenduse määramine 
 
 Nagu öeldud on lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid sufiksitega `_at`, `_if` ja `_all` juhuks kui fuktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
 
