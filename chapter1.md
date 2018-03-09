@@ -153,11 +153,7 @@ success_msg("Tubli!")
 --- type: NormalExercise key: d7c62aafff lang: r xp: 100 skills: 1
 ## Grupikokkuvõtete arvutamine
 
-
-
 Paketi **dplyr** funktsiooni `summarise()` saab kasutada andmete agregeerimiseks. <br><br>
-
-
 
 Töölaual on olemas andmestik `A1` eelmisest ülesandest. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine. Lisatud on KMI ja kaalugrupi tunnus. 
 
@@ -166,7 +162,7 @@ Aktiveeritud on pakett **dplyr**.
 
 
 *** =instructions
-- **Ülesanne 1** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.
+- **Ülesanne 1** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.  Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
 - **Ülesanne 2** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
 
 *** =hint
@@ -188,7 +184,9 @@ str(A1)
 
 
 # Ülesanne 1: leia tabel
-tabel <- summarise(__________________________________________)
+tabel <- A1 %>%   
+            ______________ %>% 
+                    ____________________________
 tabel
 
 # Ülesanne 2: leia mis grupp on kõige madalama arstivisiidil käimise osakaaluga.
@@ -202,8 +200,9 @@ str(A1)
 
 
 # Ülesanne 1: leia tabel
-tabel <- ddply(A1, c("sugu", "elukoht"), summarise, 
-                n = length(sugu), 
+tabel <- A1 %>% 
+            group_by(sugu, elukoht) %>% 
+                summarise(n = length(sugu),
                 kesk.vanus = mean(vanus), kesk.kmi = mean(kmi), 
                 visiit.osak = sum(visiit)/length(visiit))
 tabel
@@ -216,23 +215,28 @@ madal <- list(sugu = 1, elukoht = 0)
 ```{r}
 
 # 1
-test_or(
-test_function("ddply",
-              args = c(".data", ".fun", ".variables"), index = 1,
+test_function("group_by",
+              args = c(".data"), index = 1,
               eval = TRUE,
               eq_condition = "equivalent",
-              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `ddply()`.",
-              args_not_specified_msg = paste("Funktsioonis `ddply()` pead määrama  argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtuse"),
-              incorrect_msg = paste("Funktsioonis `ddply()` on argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtus vale.")), 
-test_function("ddply",
-              args = c(".data", ".fun", ".variables"), index = 1,
-              eval = c(TRUE, TRUE, NA),
-              eq_condition = "equivalent",
-              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `ddply()`.",
-              args_not_specified_msg = paste("Funktsioonis `ddply()` pead määrama  argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtuse"),
-              incorrect_msg = paste("Funktsioonis `ddply()` on argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtus vale."))
-)
+              not_called_msg = "Esimeses ülesandes peab andmestiku grupeerima enne kui hakata arvutusi tegeama.",
+              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma  andmestiku `A1`." ),
+              incorrect_msg = paste("Funktsiooni `group_by()`  rakendatakse valele andmestikule. "))
        
+
+ 
+
+test_function("summarise",
+              args = c(".data"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `summarise()`.",
+              args_not_specified_msg = paste("Funktsiooni `summarise()`", 
+                                c(" esimeseks argumendiks peab sattuma grupeeritud andmestik.") ),
+              incorrect_msg = paste("Funktsiooni `summarise()`  ",  c(" rakendatakse  valele andmestikule.")   ))
+ 
+
+ 
        
 test_data_frame("tabel",
                 columns = c("sugu", "elukoht",  "n",  "kesk.vanus", "kesk.kmi", "visiit.osak"),
@@ -270,38 +274,6 @@ success_msg("Väga tubli!")
 
 
 
-
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:8569484d6c
-## <<<New Exercise>>>
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
 --- type:NormalExercise lang:r xp:100 skills:1 key:818a1077ad
 ## Mitmele tunnusele kirjeldavate karakteristikute leidmine 
 
@@ -314,7 +286,7 @@ Töölaual on olemas andmestik `B`. Andmestikus on 160 inimese kohta mitmete tes
 
 Aktiveeritud on pakett **dplyr**.
 
-Ülesandeks on sarnase vastustabeli moodustamine nagu eelmises ülesandes, nüüd aga paketi **dplyr** vahenditega.
+Ülesandeks on moodustada tabel, kus on igale testitulemusele leitud keskväärtus, standardhälve ning miinimum ja maksimum.
 
 
 *** =instructions
