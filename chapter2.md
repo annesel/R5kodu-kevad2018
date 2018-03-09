@@ -18,7 +18,7 @@ kus
 
 - `i` määrab read/objektid, mida edasi kasutada
 - `j` määrab veerud, mis valitakse, uuendatakse või tekitatakse
-- `by` määrab vajadusel grupitunnuse `j` tehtavateks arvutustesse.
+- `by` määrab vajadusel grupitunnuse `j` tehtavateks arvutusteks.
 
 Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
 
@@ -29,11 +29,14 @@ Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, su
 
 *** =instructions
 - **Ülesanne 1** Aktiveeri pakett **data.table**.
-- **Ülesanne 2** Kasutades  **data.table** süntaksit, prindi ekraanile tabel, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus(tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). 
-- **Ülesanne 3** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus ja pikkus neile, kes on käinud arstivisiidil (tunnuse `visiit` v'äärtus on `TRUE`).
+- **Ülesanne 2** Kasutades **data.table** süntaksit, tekita tabel `tabel1`, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus(tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). Prindi tulemus ekraanile.
+- **Ülesanne 3** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus(`kesk.vanus`) ja keskmine pikkus(`kesk.pikkus`) neile, kes on käinud arstivisiidil (tunnuse `visiit` väärtus on `TRUE`). Määra grupeering nii, et tulemustabelis on soo tunnus esimene veerg ning elukoht teine. Prindi tulemus ekraanile.
 
 *** =hint
-- Teises ülesadnes peab KMI väärtuse arvutama ja omistama veergu nimega `kmi`, teise tunnuse `sirutus` väärtustega mingit teisendus pole vaja teha. 
+- Teises ülesandes peab KMI väärtuse arvutama ja omistama veergu nimega `kmi`, teise tunnuse `sirutus` väärtustega mingit teisendust pole vaja teha. Arvutatav tunnus ja valitud veeru nimi peab olema antud listina:  `.(kmi = _____, sirutus)` või `list(kmi = _____, sirutus)`.
+- Kolmandas ülesandes on vaja määrata kaks grupeerivat tunnust, kasuta ka siin listi.
+
+
 
 *** =pre_exercise_code
 ```{r}
@@ -50,12 +53,12 @@ _______________________
 
 
 # Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
-A[______, ________]
+tabel1 <- A[______, ______]
+______
 
-
-# Ülesanne 3: tee valik objektidest ja vali/arvuta tunnused
-A[_____,______, ________]
-
+# Ülesanne 3: tee valik objektidest ja vali/arvuta tunnused gruppide kaupa
+tabel2 <- A[______, ______, ______]
+______
 
 ```
 
@@ -65,14 +68,63 @@ A[_____,______, ________]
 library(data.table)
 
 # Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
-A[vanus > 50 & kaal > 80, .(kmi = kaal/(kasv/100)^2 , sirutus )]
+tabel1 <- A[vanus > 50 & kaal > 80, .(kmi = kaal/(kasv/100)^2, sirutus )]
+tabel1
+
+# Ülesanne 3: tee valik objektidest ja vali/arvuta tunnused  tunnused gruppide kaupa
+tabel2 <-A[visiit, .(kesk.vanus = mean(vanus), kesk.pikkus = mean(kasv)), by = .(sugu, elukoht)]
+tabel2
 
 ```
 
 *** =sct
 ```{r}
+#1
+test_function(name = "library", 
+              args = "package",
+              index = 1,
+              eval = FALSE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes pead kasutama funktsiooni `library()`.",
+              args_not_specified_msg = "Käsule `library()` tuleb argumendiks anda paketi nimi.",
+              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi  `data.table`")
 
+
+#2
+test_data_frame("tabel1", columns = c("kmi", "sirutus"),
+            undefined_msg = "Andmetabel `tabel1` on defineerimata.",
+            undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale."),
+            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
+
+test_output_contains("tabel1", "Esimene tabel on ekraanile printimata")
+
+
+
+
+
+ 
+#2
+test_or(
+test_student_typed(", by = .(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
+test_student_typed(", by = list(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina.")
+)
+
+ 
+
+
+test_data_frame("tabel2", columns = c("sugu", "elukoht", "kesk.vanus", "kesk.pikkus"),
+            undefined_msg = "Andmetabel `tabel2` on defineerimata.",
+            undefined_cols_msg = paste("Andmestikus `tabel2` on mingi veerg puudu, võibolla on veeru nimi vale."),
+            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
+
+test_output_contains("tabel2", "Teine tabel on ekraanile printimata")
+
+ 
+
+ 
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:d4e4f82648
 ## Tunnuse tüübi teisendus, sagedustabeli leidmine.
 
