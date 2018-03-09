@@ -2,6 +2,306 @@
 title       : Pakett dplyr
 description : Paketi dplyr kasutamine
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:49f706f3a3
+## Andmestikku tunnuste lisamine 
+
+
+Paketi **dplyr** funktsioonidest `mutate()` on abiks kui on vaja andmestikku uusi tunnuseid lisada. Korraga saab defineerida mitu uut tunnust, kusjuures tunnust, mille definitsioon on käsus juba kirjas, saab kohe samas kasutada.<br><br>
+
+
+Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
+
+
+
+
+*** =instructions
+- **Ülesanne 1** Aktiveeri pakett **dplyr**.
+- **Ülesanne 2** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate KMI väärtus (tunnus nimega `kmi`) ja tunnus, mis sellesama KMI põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`. 
+- **Ülesanne 3** Vaata üle uue andmestiku struktuur käsuga `str()`.
+
+
+*** =hint
+- Kui kirjutad `mutate()` käsku uute tunnuste definitsioonid, siis vaata, et KMI arvutus eelneks kaalugruppide määramisele, sest siis on KMI väärtust juba vaja kasutada.
+- KMI  arvutusvalem: (kaal kilogrammides) / (pikkus meetrites)^2
+
+*** =pre_exercise_code
+```{r}
+A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
+
+```
+
+
+
+*** =sample_code
+```{r}
+# Vaata andmestik üle
+head(A)
+
+
+# Ülesanne 1: aktiveeri pakett
+_____________
+
+
+# Ülesanne 2: lisa tunnused
+A1 <- mutate(___________________)
+
+
+# Ülesanne 3: vaata tulemust
+____________
+
+
+```
+
+*** =solution
+```{r}
+# Vaata andmestik üle
+head(A)
+
+
+# Ülesanne 1: aktiveeri pakett
+library(dplyr)
+ 
+
+
+# Ülesanne 2: lisa tunnused
+A1 <- mutate(A, 
+            kmi = kaal/(kasv/100)^2, 
+            kaalugrupp = ifelse(kmi <= 25, "ala voi normkaal", "ylekaal"))
+
+
+# Ülesanne 3: vaata tulemust
+str(A1)
+```
+
+
+
+
+
+*** =sct
+```{r}
+# 1
+test_function(name = "library", 
+              args = "package",
+              index = 1,
+              eval = FALSE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes pead kasutama funktsiooni `library()`.",
+              args_not_specified_msg = "Käsule `library()` tuleb argumendiks anda paketi nimi.",
+              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi  `dplyr`")
+
+
+
+# 2
+test_function(name = "mutate", 
+              args = ".data",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Teises ülesandes pead kasutama funktsiooni `mutate()`.",
+              args_not_specified_msg = "Käsule `mutate()` tuleb  esimeseks argumendiks anda andmestiku nimi `A`.",
+              incorrect_msg =  "Käsule `mutate()` antud andmestik on vale.")
+
+
+
+
+test_function(name = "ifelse", 
+              args = c("test", "yes", "no"),
+              index = 1,
+              eval = c(F, T, T),
+              eq_condition = "equivalent",
+              not_called_msg = "Teises ülesandes pead kasutama funktsiooni `ifelse()`.",
+              args_not_specified_msg = paste("Käsu `ifelse()` argumentidest peab " ,
+                                c("esimene olema loogiline test", 
+                                "teine  määratav väärtus, kui loogilise testi tulemus on `TRUE`", 
+                                "kolmas olema `FALSE` tulemuse korral määratav väärtus."))
+                                ,
+              incorrect_msg =  paste("Käsule `ifelse()` on antud vale väärtus ", c("esimeseks", "teiseks", "kolmandaks"), " argumendiks.")   )
+
+
+
+
+test_data_frame("A1", columns = c("kmi", "kaalugrupp"),
+            undefined_msg = "Andmetabel `A1` on defineerimata.",
+            undefined_cols_msg = paste("Andmestikus `A1` on mingi veerg puudu, võibolla on veeru nimi vale."),
+            incorrect_msg = "Andmetabelis `A1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
+
+ 
+
+# 3
+test_function(name = "str", 
+              args = "object",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Viimases ülesandes pead kasutama funktsiooni `str()`.",
+              args_not_specified_msg = "Käsule `str()` tuleb argumendiks anda andmestiku nimi.",
+              incorrect_msg =  "Käsu `str()` argumendiks on vale andmestik.")
+
+			  
+			  
+
+success_msg("Tubli!")               
+       
+            
+
+###########################################################
+```
+
+
+
+--- type: NormalExercise key: d7c62aafff lang: r xp: 100 skills: 1
+## Grupikokkuvõtete arvutamine
+
+
+
+Paketi **dplyr** funktsiooni `summarise()` saab kasutada andmete agregeerimiseks. <br><br>
+
+
+
+Töölaual on olemas andmestik `A1` eelmisest ülesandest. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine. Lisatud on KMI ja kaalugrupi tunnus. 
+
+
+Aktiveeritud on pakett **dplyr**.
+
+
+*** =instructions
+- **Ülesanne 1** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.
+- **Ülesanne 2** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
+
+*** =hint
+- Kasuta funktsiooni `group_by`, et määrata andmestikule grupeering soo ja elukoha põhjal
+
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
+A1 <- mutate(A, kmi = kaal/(kasv/100)^2, kaalugrupp = ifelse(kmi <= 25, "ala- või normaalkaal", "ylekaal"))
+rm(A)
+```
+
+*** =sample_code
+```{r}
+# Vaata andmestik üle
+str(A1)
+
+
+# Ülesanne 1: leia tabel
+tabel <- summarise(__________________________________________)
+tabel
+
+# Ülesanne 2: leia mis grupp on kõige madalama arstivisiidil käimise osakaaluga.
+madal <- list(sugu = ___, elukoht = ___)
+```
+
+*** =solution
+```{r}
+# Vaata andmestik üle
+str(A1)
+
+
+# Ülesanne 1: leia tabel
+tabel <- ddply(A1, c("sugu", "elukoht"), summarise, 
+                n = length(sugu), 
+                kesk.vanus = mean(vanus), kesk.kmi = mean(kmi), 
+                visiit.osak = sum(visiit)/length(visiit))
+tabel
+
+# Ülesanne 2: leia mis grupp on kõige madalama arstivisiidil käimise osakaaluga.
+madal <- list(sugu = 1, elukoht = 0)
+```
+
+*** =sct
+```{r}
+
+# 1
+test_or(
+test_function("ddply",
+              args = c(".data", ".fun", ".variables"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `ddply()`.",
+              args_not_specified_msg = paste("Funktsioonis `ddply()` pead määrama  argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtuse"),
+              incorrect_msg = paste("Funktsioonis `ddply()` on argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtus vale.")), 
+test_function("ddply",
+              args = c(".data", ".fun", ".variables"), index = 1,
+              eval = c(TRUE, TRUE, NA),
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `ddply()`.",
+              args_not_specified_msg = paste("Funktsioonis `ddply()` pead määrama  argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtuse"),
+              incorrect_msg = paste("Funktsioonis `ddply()` on argumendi " , c("`.data`", "`.fun`", "`.variables`"), "väärtus vale."))
+)
+       
+       
+test_data_frame("tabel",
+                columns = c("sugu", "elukoht",  "n",  "kesk.vanus", "kesk.kmi", "visiit.osak"),
+                eq_condition = "equivalent",
+                undefined_msg = "Tabelit `tabel` pole tekitatud!",
+                undefined_cols_msg = paste("Tabelis `tabel` on mõni nõutud veerg puudu või on veeru nimi vale! "),
+                incorrect_msg = paste("Tabelis `tabel` on mõni veerg valede väärtustega või on veeru nimi vale!"))
+                
+                
+ 
+
+# 2
+test_object("madal",
+            eq_condition = "equivalent",
+            eval = TRUE,
+            undefined_msg = "List `madal` on tekitamata.",
+            incorrect_msg = "Listis `madal`  on mingi väärtus vale.")
+
+
+
+success_msg("Väga tubli!")               
+       
+            
+
+###########################################################
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8569484d6c
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:818a1077ad
 ## Mitmele tunnusele kirjeldavate karakteristikute leidmine 
 
