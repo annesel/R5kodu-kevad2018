@@ -99,7 +99,10 @@ test_data_frame("tabel1", columns = c("kmi", "sirutus"),
 test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata")
 
 
-
+test_or(
+test_student_typed(", .(",  not_typed_msg = "Kontrolli, kas kastad ikka **data.table** tüüpi süntaksit"),
+test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kastad ikka **data.table** tüüpi süntaksit")
+)
 
 
  
