@@ -12,7 +12,7 @@ Tekstilõigud on andmestikus tunnuse `tekst` nime all.
 Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
 
 
-Pakett `stringr` on juba aktiveeritud.
+Töölaual on aktiveeritud pakett `stringr`.
 
 
 
