@@ -110,7 +110,7 @@ test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kastad ikka **dat
 test_or(
 test_student_typed(", by = .(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
 test_student_typed(", by = list(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
-test_student_typed(", by = c("sugu", "elukoht")",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed, kasuta selleks listi.")
+test_student_typed(", by = c('sugu', 'elukoht')",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed, kasuta selleks listi.")
 )
 
  
