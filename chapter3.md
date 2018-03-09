@@ -195,7 +195,7 @@ Mõõdetud on apelsinipuude tüve ümbermõõtu (`circumference`). Iga puud on m
 
 *** =instructions
 - **Ülesanne 1** Lisa andmestikku uus tunnus nimega `kuupaev`, mis näitaks mõõtmiste kuupäevi kujul "YYYY-MM-DD".
-- **Ülesanne 2** Vali kuupäeva veerust unikaalsed väärtused ja omista muutujale `ajad`.
+- **Ülesanne 2** Vali kuupäeva veerust unikaalsed väärtused ja omista muutujale `ajad`. Veendu, et need on kasvavas järjekorras.
 - **Ülesanne 3** Kasutades funktsiooni `difftime` ja eelmises sammus tehtud muutujat `ajad`, leia mõõtmistevahelised ajad nädalates. Tutvu ka funktsiooni `difftime` abifailiga. Arvutuste tulemus omista muutujale `nadalad`.
 
 *** =hint
@@ -260,7 +260,7 @@ test_function(name = "as.Date",
               eq_condition = "equivalent",
               not_called_msg = "Esimeses ülesandes saad kasutada funktsiooni `as.Date`.",
               args_not_specified_msg = c("Määra `as.Date` esimeseks argumendiks vektor `age`", "Pead `as.Date` funktsiooni lisama `origin` arguemndi."),
-              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vvale tunnuse andnud", "Oled `as.Date`  käsus vale `origin` argumendi väärtuse määranud."))
+              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vale tunnuse andnud", "Oled `as.Date`  käsus vale `origin` argumendi väärtuse määranud."))
               
 test_data_frame("apelsinid", columns = "kuupaev",
             undefined_msg = "Andmetabel `apelsinid` on kustutatud!!.",
