@@ -17,7 +17,7 @@ Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, su
 
 *** =instructions
 - **Ülesanne 1** Aktiveeri pakett **dplyr**.
-- **Ülesanne 2** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate KMI väärtus (tunnus nimega `kmi`) ja tunnus, mis sellesama KMI põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`. 
+- **Ülesanne 2** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate KMI väärtus (tunnus nimega `kmi`) ja tunnus, mis sellesama KMI põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`, tõeväärtusvektor tekita nii, et väärtus `TRUE` vastaks madalamale KMI väärtusele.
 - **Ülesanne 3** Vaata üle uue andmestiku struktuur käsuga `str()`.
 
 
