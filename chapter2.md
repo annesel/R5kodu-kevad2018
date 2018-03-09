@@ -93,15 +93,15 @@ test_function(name = "library",
 #2
 test_data_frame("tabel1", columns = c("kmi", "sirutus"),
             undefined_msg = "Andmetabel `tabel1` on defineerimata.",
-            undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale."),
+            undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale. Või pole tabel data.table-tüüpi!"),
             incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused/sisu valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
 
 test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata")
 
 
 test_or(
-test_student_typed(", .(",  not_typed_msg = "Kontrolli, kas kastad ikka **data.table** tüüpi süntaksit"),
-test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kastad ikka **data.table** tüüpi süntaksit")
+test_student_typed(", .(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit"),
+test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit")
 )
 
 
