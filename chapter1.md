@@ -286,7 +286,18 @@ Töölaual on olemas andmestik `B`. Andmestikus on 160 inimese kohta mitmete tes
 
 Aktiveeritud on pakett **dplyr**.
 
-Ülesandeks on moodustada tabel, kus on igale testitulemusele leitud keskväärtus, standardhälve ning miinimum ja maksimum.
+Ülesandeks on moodustada tabel, kus on igale testitulemusele leitud keskväärtus, standardhälve ning miinimum ja maksimum. Tabelis peaks iga testitunnus määrama ühe rea, mis on täidetud tema karakteristikutega:
+
+```{r}
+   variable     mean       sd   min   max
+ 1  test109 19.82375 2.034034  14.0  26.3
+ 2  test141 20.14250 2.173267  14.3  26.5
+ 3  test113 19.94500 2.157940  13.9  25.1
+ 4  test177 19.84625 1.958754  15.3  24.7
+# ... jne
+```
+
+
 
 
 *** =instructions
