@@ -166,7 +166,7 @@ Aktiveeritud on pakett **dplyr**.
 - **Ülesanne 2** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
 
 *** =hint
-- Kasuta funktsiooni `group_by`, et määrata andmestikule grupeering soo ja elukoha põhjal
+- Kasuta funktsiooni `group_by()`, et määrata andmestikule grupeering soo ja elukoha põhjal
 
 
 *** =pre_exercise_code
@@ -255,7 +255,7 @@ test_object("madal",
             eq_condition = "equivalent",
             eval = TRUE,
             undefined_msg = "List `madal` on tekitamata.",
-            incorrect_msg = "Listis `madal`  on mingi väärtus vale.")
+            incorrect_msg = "Listis `madal` on mingi väärtus vale.")
 
 
 
@@ -286,13 +286,11 @@ success_msg("Väga tubli!")
 Lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid prefiksitega `_at`, `_if` ja `_all` juhuks kui funktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
 
 
-
 Töölaual on olemas andmestik `B`. Andmestikus on 160 inimese kohta mitmete testide ja ankeetküsitluse tulemused ning taustatunnuste väärtused.
 
 Aktiveeritud on pakett **dplyr**.
 
 Ülesandeks on moodustada tabel, kus on igale testitulemusele leitud keskväärtus, standardhälve ning miinimum ja maksimum. Tabelis peaks iga testitunnus määrama ühe rea, mis on täidetud tema karakteristikutega:
-
 ```{r}
    variable     mean       sd   min   max
  1  test109 19.82375 2.034034  14.0  26.3
@@ -307,7 +305,7 @@ Aktiveeritud on pakett **dplyr**.
 
 *** =instructions
 - **Ülesanne 1** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
-- **Ülesanne 2** Täienda koodi kasutades funktsioone    `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
+- **Ülesanne 2** Täienda koodi kasutades funktsioone  `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
 
 
 *** =hint
@@ -398,7 +396,7 @@ test_function(name = "library",
               eq_condition = "equivalent",
               not_called_msg = "Esimeses ülesandes pead kasutama funktsiooni `library()`, et aktiveerida pakett **reshape2**.",
               args_not_specified_msg = "Käsule `library()` tuleb argumendiks anda paketi nimi.",
-              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi  `reshape2`")
+              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi `reshape2`")
 
 
 
@@ -407,8 +405,8 @@ test_function("melt",
               eval = TRUE,
               eq_condition = "equivalent",
               not_called_msg = "Kasuta teises ülesandes funktsiooni `melt()`.",
-              args_not_specified_msg = paste("Funktsioonile `melt()` peab aheldamise kaudu argumendiks minema andmestik `B1`." ),
-              incorrect_msg = paste("Funktsioonile `melt()` saadetakse argumendiks  vale andmestik."))
+              args_not_specified_msg = paste("Funktsioonile `melt()` peab aheldamise kaudu argumendiks minema andmestik `B1`. Teisi argumente antud funktsioonis pole vaja täpsustada." ),
+              incorrect_msg = paste("Funktsioonile `melt()` saadetakse argumendiks vale andmestik."))
        
 
 
@@ -419,7 +417,7 @@ test_function("group_by",
               eval = TRUE,
               eq_condition = "equivalent",
               not_called_msg = "Kasuta teises ülesandes funktsiooni `group_by()`.",
-              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma pikas formaadis andmestiku." ),
+              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma pikas formaadis andmestiku. Grupeerivaks tunnuseks peab minema veerg, kus on kirjas testide nimed." ),
               incorrect_msg = paste("Funktsiooni `group_by()`  rakendatakse valele andmestikule. "))
        
 
@@ -486,7 +484,7 @@ Aktiveeritud on pakett **dplyr**.
 
 *** =instructions
 - **Ülesanne 1**  Teisenda andmestikus `mass` kõik tunnused, mis on tüüpi `factor` tavaliseks tekstiks ehk tüüpi `character`. Selleks täienda antud koodi sobivalt. Teisendatud tunnustega andmestik nimeta `mass_char`. Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
-- **Ülesanne 2** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse. Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisendus tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`. 
+- **Ülesanne 2** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`. 
 
 
 *** =hint
