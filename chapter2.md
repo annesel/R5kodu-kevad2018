@@ -96,12 +96,12 @@ test_data_frame("tabel1", columns = c("kmi", "sirutus"),
             undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale. Või pole tabel data.table-tüüpi!"),
             incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused/sisu valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
 
-test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata")
+test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata.")
 
 
 test_or(
-test_student_typed(", .(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit"),
-test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit")
+test_student_typed(", .(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit."),
+test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit.")
 )
 
 
@@ -121,7 +121,7 @@ test_data_frame("tabel2", columns = c("sugu", "elukoht", "kesk.vanus", "kesk.pik
             undefined_cols_msg = paste("Andmestikus `tabel2` on mingi veerg puudu, võibolla on veeru nimi vale."),
             incorrect_msg = "Andmetabelis `tabel2` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
 
-test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printimata")
+test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printimata.")
 
  
 
