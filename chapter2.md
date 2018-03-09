@@ -96,7 +96,7 @@ test_data_frame("tabel1", columns = c("kmi", "sirutus"),
             undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale."),
             incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
 
-test_output_contains("tabel1", "Esimene tabel on ekraanile printimata")
+test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata")
 
 
 
@@ -117,7 +117,7 @@ test_data_frame("tabel2", columns = c("sugu", "elukoht", "kesk.vanus", "kesk.pik
             undefined_cols_msg = paste("Andmestikus `tabel2` on mingi veerg puudu, võibolla on veeru nimi vale."),
             incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
 
-test_output_contains("tabel2", "Teine tabel on ekraanile printimata")
+test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printimata")
 
  
 
