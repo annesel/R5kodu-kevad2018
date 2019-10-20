@@ -1,9 +1,17 @@
 ---
-title       : Sõned ja kuupäevad
-description : Töö tekstiväärtustega ning kuupäevadega
+title: 'Sõned ja kuupäevad'
+description: 'Töö tekstiväärtustega ning kuupäevadega'
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:d68116f086
 ## Teksti esinemise kontroll
+
+```yaml
+type: NormalExercise
+key: d68116f086
+lang: r
+xp: 100
+skills: 1
+```
 
 Töölaual on andmestik `tekstid`, mis sisaldab tekstilõike ajalehe Postimees artiklitest. Kõigil lõikudel on ka emotsionaalne hinnang st kas lugejad on hinnanud lõigu negatiivseks, postiivseks, neutraalseks või vastuoluliseks.
 
@@ -14,20 +22,17 @@ Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
 
 Töölaual on aktiveeritud pakett `stringr`.
 
-
-
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Kasutades paketi `stringr` sobivat käsku tuvasta, millistes tekstilõikudes esineb string 'Eesti' või 'eesti'. Tulemuseks peaks olema tõevektor (`TRUE` kui otsitav väärtus on tekstis), omista see muutujale `esineb`. Väike/suurtähe võimaluse otsitavas tekstis saab kirja panna järgnevalt `[Ss]uurtäht`.
 - **Ülesanne 2** Kasutades eelmises ülesandes tekitatud tunnust leia käsuga `table` sagedustabel, kus oleks näha tekstilõigu emotsionaalsete hinnangute kaupa ülalvaadatud stringi esinemissagedused.
 Määra emotsiooni tunnus sagedustabelis reatunnuseks. Tekkiv sagedustabel omista muutujale `sagedustabel`, prindi see ekraanile.
 - **Ülesanne 3** Kasutades eelnevalt tekitatud sagedustabeli-objekti leia tekstilõikude hinnangute jaotus mõlemas tekstilõikude grupis (st nii nende lõikude osas, kus stringi ei esinenud, kui selles grupis, kus esines). Omista saadud tabel muutujale `tinglikjaotus`, prindi see ekraanile.
 
-*** =hint
+`@hint`
 - Esimeses ülesandes kasuta funktsiooni `str_detect` või  `str_count`, kus määra `pattern` argumendiks `[Ee]esti`. Käsk `str_count` annab tulemuseks esinemiste arvu, seega nõutud tõeväärtustega vektori saamiseks peab veel kontrollima, kas tulemused on üle nulli.
 - Kolmandas ülesandes kasuta käsku `prop.table`, määrama peab ka selle, kas jaotus leida kogu tabeli summa või rea/veerusummade suhtes.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 # http://peeter.eki.ee:5000/valence/paragraphsquery/
 # eluolu alajaotus, kõik emotsioonid,1000 esimest failist
@@ -39,7 +44,7 @@ library(stringr)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # vaata andmestikku
 str(tekstid)
@@ -58,9 +63,7 @@ tinglikjaotus
 
 ```
 
-
-
-*** =solution
+`@solution`
 ```{r}
 # vaata andmestikku
 str(tekstid)
@@ -80,7 +83,7 @@ tinglikjaotus <- prop.table(sagedustabel, 2)
 tinglikjaotus
 ```
 
-*** =sct
+`@sct`
 ```{r}
 #test_predefined_objects(tekstid, 
 #                        eq_condition = "equivalent",
@@ -180,36 +183,39 @@ success_msg("Hästi!")
 
 ```
 
+---
 
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:2e5c28c998
 ## Date-tüüpi muutuja loomine
+
+```yaml
+type: NormalExercise
+key: 2e5c28c998
+lang: r
+xp: 100
+skills: 1
+```
 
 Töölaual on andmestik `apelsinid`.
 
 Mõõdetud on apelsinipuude tüve ümbermõõtu (`circumference`). Iga puud on mõõdetud korduvalt, mõõtmise aeg on veerus `age`, mis näitab puu vanust päevades mõõtmishetkel. Puu vanust hakati lugema alates katse algusest, mis oli 1968 aasta 31. detsember. Kõiki puid mõõdeti samadel päevadel.
 
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Lisa andmestikku uus tunnus nimega `kuupaev`, mis näitaks mõõtmiste kuupäevi kujul "YYYY-MM-DD".
 - **Ülesanne 2** Vali kuupäeva veerust unikaalsed väärtused ja omista muutujale `ajad`. Veendu, et need on kasvavas järjekorras.
 - **Ülesanne 3** Kasutades funktsiooni `difftime` ja eelmises sammus tehtud muutujat `ajad`, leia mõõtmistevahelised ajad nädalates. Tutvu ka funktsiooni `difftime` abifailiga. Arvutuste tulemus omista muutujale `nadalad`.
 
-*** =hint
+`@hint`
 - Kuupäevad saad luua `as.Date` funtksiooniga, määrama peab ka `origin` argumendi - see on kuupäev milest alates päevi hakati loendama.
 - Käsus `difftime` on kaks esimest argumenti ajavektorid: `ajad[-1]` ja `ajad[-length(ajad)]`. Kasutada on vaja argumenti `units`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 library(nlme)
 apelsinid <- as.data.frame(Orange)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vaata andmestikku
 head(apelsinid)
@@ -229,10 +235,7 @@ nadalad
 
 ```
 
-
-
-
-*** =solution
+`@solution`
 ```{r}
 # Vaata andmestikku
 head(apelsinid)
@@ -251,7 +254,7 @@ nadalad
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 #1
 test_function(name = "as.Date", 
@@ -302,27 +305,31 @@ success_msg("Hästi!")
 
 ```
 
+---
 
-
-<!--- vahe--->
-
---- type:NormalExercise lang:r xp:100 skills:1 key:30fdd7dec6
 ## Kuupäevade võrdlemine
+
+```yaml
+type: NormalExercise
+key: 30fdd7dec6
+lang: r
+xp: 100
+skills: 1
+```
 
 Töölaual on andmestik `andmed`, mis sisaldab infot patsientide haiglasse saabumise(`haiglasse.kp`) ja lahkumise(`haiglast.kp`) kuupäevade kohta.
 
 Ülesannetes peab moodustama 2 alamandmestikku.
 
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Kontrolli, kas andmestikus on vigaseid vaatlusi: ridu, kus patsient on haiglast lahkunud enne haiglasse saabumise kuupäeva. Vali selliste vaatluste read andmestikust ja omista muutujale `vead1`. Prindi tulemus ekraanile. 
 - **Ülesanne 2** Kontrolli, kas andmestikus on patsiente, kelle kohta pole teada nende haiglast lahkumise kuupäev. Vali selliste vaatluste read andmestikust ja omista muutujale `vead2`. Prindi tulemus ekraanile.
 
-*** =hint
+`@hint`
 - Alamandestiku moodustamiseks võib kasutada käsku `subset` või konstruktsiooni `andmed[tingimus,]`. 
 - Arvesta, et `NA` väärtus võrdluses annab väärtuse `NA`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(126)
 n <- 391
@@ -342,7 +349,7 @@ rm(n, id, kp, haiglasse.kp, haiglast.kp, indeks)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # vaata andmestikku
 str(andmed)
@@ -361,7 +368,7 @@ vead2
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # vaata andmestikku
 str(andmed)
@@ -378,11 +385,7 @@ vead2 <- subset(andmed, is.na(andmed$haiglast.kp))
 vead2
 ```
 
-
-
-
-
-*** =sct
+`@sct`
 ```{r}
 test_predefined_objects("andmed", 
                         eq_condition = "equivalent",
@@ -421,27 +424,3 @@ success_msg("Super! Viimane ülesanne sai tehtud. Kiida ennast!")
 
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

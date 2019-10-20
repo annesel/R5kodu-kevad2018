@@ -1,14 +1,17 @@
 ---
-title       : Pakett data.table
-description : Andmetöötluspaketi data.table kasutamine
+title: 'Pakett data.table'
+description: 'Andmetöötluspaketi data.table kasutamine'
+---
 
-
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:62a4ef70a0
 ## Ridade filtreerimine ja veergude valik/defineerimine
+
+```yaml
+type: NormalExercise
+key: 62a4ef70a0
+lang: r
+xp: 100
+skills: 1
+```
 
 Kui `DT` on *data.table* tüüpi andmetabel, siis paketi **data.table** põhisüntaksi kuju saab kirja panna järgnevalt
 ```{r, eval = F}
@@ -25,20 +28,16 @@ Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, su
  
 Ülesannetes nõutud arvutustes ära kasuta ümardamist.
 
-
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Aktiveeri pakett **data.table**.
 - **Ülesanne 2** Kasutades **data.table** süntaksit, tekita tabel `tabel1`, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus (tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). Prindi tulemus ekraanile.
 - **Ülesanne 3** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus (`kesk.vanus`) ja keskmine pikkus (`kesk.pikkus`) neile, kes pole käinud arstivisiidil (tunnuse `visiit` väärtus on `FALSE`). Määra grupeering nii, et tulemustabelis on soo tunnus esimene veerg ning elukoht teine. Prindi tulemus ekraanile.
 
-*** =hint
+`@hint`
 - Teises ülesandes peab KMI väärtuse arvutama ja omistama veergu nimega `kmi`, teise tunnuse `sirutus` väärtustega mingit teisendust pole vaja teha. Arvutatav tunnus ja valitud veeru nimi peab olema antud listina:  `.(kmi = _____, sirutus)` või `list(kmi = _____, sirutus)`.
 - Kolmandas ülesandes on vaja määrata kaks grupeerivat tunnust, kasuta ka siin listi.
 
-
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 A0 <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
 A <- data.table::as.data.table(A0)
@@ -46,7 +45,7 @@ rm(A0)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Ülesanne 1: aktiveeri pakett
 _______________________
@@ -62,7 +61,7 @@ ______
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Ülesanne 1: aktiveeri pakett
 library(data.table)
@@ -77,7 +76,7 @@ tabel2
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 #1
 test_function(name = "library", 
@@ -128,9 +127,17 @@ test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printim
  
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:d4e4f82648
 ## Tunnuse tüübi teisendus, sagedustabeli leidmine.
+
+```yaml
+type: NormalExercise
+key: d4e4f82648
+lang: r
+xp: 100
+skills: 1
+```
 
 Kui `DT` on *data.table* tüüpi andmetabel, siis paketi **data.table** põhisüntaksi kuju saab kirja panna järgnevalt
 ```{r, eval = F}
@@ -149,17 +156,16 @@ Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
 
 Pakett **data.table** on juba aktiveeritud.
 
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Kontrolli, kas andmestik on *data.table* tüüpi, kasutades funktsiooni `is.data.table()`. 
 - **Ülesanne 2** Kasutades  **data.table** süntaksit, teisenda tunnus `loigunr`, mis on esialgu tüüpi `character`, arvuliseks, täpsemalt täisarvuks. Ära tekita uut tabelit, tee muudatus andmestiku `tekstid` sees.
-- **Ülesanne 3** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega *A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`. 
+- **Ülesanne 3** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega *A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`.
 
-*** =hint
+`@hint`
 - Lõigu numbri tüübi teisendamisel pead tegema teisenduse andmestiku sees, st kasutama `:=` operaatorit kujul `loigunr := as.integer(loigunr)`.
 - Kolmandas ülesandes saab sobivad read valida näiteks tingimusega `loigunr > 2 & startsWith(tekst, "A")`.
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 library(data.table)
 tekstid <- fread("http://kodu.ut.ee/~annes/R/tekstid.csv", nrow = 1000, encoding = "UTF-8", 
@@ -170,7 +176,7 @@ tekstid <- tekstid[-n, ]
 rm(n)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Ülesanne 1: kontrolli, kas andmestik on data.table-tüüpi
 _______________________
@@ -184,7 +190,7 @@ valik <- tekstid[___________]
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Ülesanne 1: kontrolli, kas andmestik on data.table-tüüpi
 is.data.table(tekstid)
@@ -199,7 +205,7 @@ valik
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 #1
 test_function("is.data.table",
@@ -260,13 +266,3 @@ success_msg("Väga tubli! Viimane ülesanne sai tehtud!")
 
 
 ```
-
-
-
-
-
-
-
-
-
-

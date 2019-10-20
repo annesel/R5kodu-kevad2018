@@ -1,39 +1,39 @@
 ---
-title       : Pakett dplyr
-description : Paketi dplyr kasutamine
+title: 'Pakett dplyr'
+description: 'Paketi dplyr kasutamine'
+---
 
+## Andmestikku tunnuste lisamine
 
---- type:NormalExercise lang:r xp:100 skills:1 key:49f706f3a3
-## Andmestikku tunnuste lisamine 
-
+```yaml
+type: NormalExercise
+key: 49f706f3a3
+lang: r
+xp: 100
+skills: 1
+```
 
 Paketi **dplyr** funktsioonidest `mutate()` on abiks kui on vaja andmestikku uusi tunnuseid lisada. Korraga saab defineerida mitu uut tunnust, kusjuures tunnust, mille definitsioon on käsus juba kirjas, saab kohe samas kasutada.<br><br>
 
 
 Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
 
-
-
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Aktiveeri pakett **dplyr**.
 - **Ülesanne 2** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate KMI väärtus (tunnus nimega `kmi`) ja tunnus, mis sellesama KMI põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`, tõeväärtusvektor tekita nii, et väärtus `TRUE` vastaks madalamale KMI väärtusele.
 - **Ülesanne 3** Vaata üle uue andmestiku struktuur käsuga `str()`.
 
-
-*** =hint
+`@hint`
 - Kui kirjutad `mutate()` käsku uute tunnuste definitsioonid, siis vaata, et KMI arvutus eelneks kaalugruppide määramisele, sest siis on KMI väärtust juba vaja kasutada.
 - KMI  arvutusvalem: (kaal kilogrammides) / (pikkus meetrites)^2
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
 
 ```
 
-
-
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vaata andmestik üle
 head(A)
@@ -53,7 +53,7 @@ ____________
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Vaata andmestik üle
 head(A)
@@ -74,11 +74,7 @@ A1 <- mutate(A,
 str(A1)
 ```
 
-
-
-
-
-*** =sct
+`@sct`
 ```{r}
 # 1
 test_function(name = "library", 
@@ -148,10 +144,17 @@ success_msg("Tubli!")
 ###########################################################
 ```
 
+---
 
-
---- type: NormalExercise key: d7c62aafff lang: r xp: 100 skills: 1
 ## Grupikokkuvõtete arvutamine
+
+```yaml
+type: NormalExercise
+key: d7c62aafff
+lang: r
+xp: 100
+skills: 1
+```
 
 Paketi **dplyr** funktsiooni `summarise()` saab kasutada andmete agregeerimiseks. <br><br>
 
@@ -160,16 +163,14 @@ Töölaual on olemas andmestik `A1` eelmisest ülesandest. Andmestikus on kirjas
 
 Aktiveeritud on pakett **dplyr**.
 
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.  Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
 - **Ülesanne 2** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
 
-*** =hint
+`@hint`
 - Kasuta funktsiooni `group_by()`, et määrata andmestikule grupeering soo ja elukoha põhjal
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 library(dplyr)
 A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
@@ -177,7 +178,7 @@ A1 <- mutate(A, kmi = kaal/(kasv/100)^2, kaalugrupp = ifelse(kmi <= 25, "ala- v�
 rm(A)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vaata andmestik üle
 str(A1)
@@ -193,7 +194,7 @@ tabel
 madal <- list(sugu = ___, elukoht = ___)
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Vaata andmestik üle
 str(A1)
@@ -211,7 +212,7 @@ tabel
 madal <- list(sugu = 1, elukoht = 0)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 # 1
@@ -269,19 +270,17 @@ success_msg("Väga tubli!")
 ###########################################################
 ```
 
+---
 
+## Mitmele tunnusele kirjeldavate karakteristikute leidmine
 
-
-
-
-
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:818a1077ad
-## Mitmele tunnusele kirjeldavate karakteristikute leidmine 
-
+```yaml
+type: NormalExercise
+key: 818a1077ad
+lang: r
+xp: 100
+skills: 1
+```
 
 Lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid prefiksitega `_at`, `_if` ja `_all` juhuks kui funktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
 
@@ -300,26 +299,22 @@ Aktiveeritud on pakett **dplyr**.
 # ... jne
 ```
 
-
-
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
 - **Ülesanne 2** Täienda koodi kasutades funktsioone  `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
 
-
-*** =hint
+`@hint`
 - Aktiveerima peab paketi **reshape2**, et kasutada funktsiooni `melt()`.
 - Kuna alamandmestikus `B1` on ainult testitulemused ja pole identifitseerivaid tunnuseid, siis andmestiku pikale kujule viimise võib kirja panna nii `B1 %>% melt()`. Tulemuseks on andmetabel kus ühes veerus on tunnuste nimed, teises tunnuste  väärtused.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 B <- read.csv2("http://kodu.ut.ee/~annes/R/B.csv", nrows = 160)
 library(dplyr)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vaata üle tunnusenimed ja andmestiku dimensioonid
 names(B)
@@ -338,7 +333,7 @@ arrange(tabel, variable)
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Vaata üle tunnusenimed ja andmestiku dimensioonid
 names(B)
@@ -355,7 +350,7 @@ tabel <- B1 %>% melt()  %>%  group_by(variable)  %>%  summarise_all(.funs = c("m
 arrange(tabel, variable)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 #1
@@ -459,17 +454,17 @@ success_msg("Ülesanne tehtud. Väga tubli!")
 
 ```
 
+---
 
+## Mitmele tunnusele teisenduse määramine
 
-
-
-
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:edea2d2fcc
-## Mitmele tunnusele teisenduse määramine 
+```yaml
+type: NormalExercise
+key: edea2d2fcc
+lang: r
+xp: 100
+skills: 1
+```
 
 Nagu öeldud on lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid sufiksitega `_at`, `_if` ja `_all` juhuks kui fuktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
 
@@ -479,20 +474,16 @@ Töölaual on olemas andmestikud `mass` (tuttav praktikumist) ja `antropo`. Andm
 
 Aktiveeritud on pakett **dplyr**.
 
- 
-
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1**  Teisenda andmestikus `mass` kõik tunnused, mis on tüüpi `factor` tavaliseks tekstiks ehk tüüpi `character`. Selleks täienda antud koodi sobivalt. Teisendatud tunnustega andmestik nimeta `mass_char`. Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
-- **Ülesanne 2** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`. 
+- **Ülesanne 2** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`.
 
-
-*** =hint
+`@hint`
 - Selleks, et kontrollida, kas tunnus on faktortüüpi, saab kasutada funktsiooni `is.factor()`.
 - Selleks, et tunnuse tüüpi määrata tavaliseks tekstitüübiks, kasuta funktsiooni `as.character()`.
 - Uus funktsioon peaks läbi viima jagamise arvuga 10, `function(x) x/10`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 antropo <- read.table("http://kodu.ut.ee/~annes/R/antropo.txt",header=T,sep="\t")
 mass<- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt",header=T,sep="\t")
@@ -501,7 +492,7 @@ library(dplyr)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Tutvu andmestikega
 str(mass)
@@ -517,7 +508,7 @@ antropo_cm_kg <- _______  ____  mutate______(.vars = vars(-SEX), .funs = uus_fun
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Tutvu andmestikega
 str(mass)
@@ -534,7 +525,7 @@ antropo_cm_kg <- antropo %>% mutate_at(.vars = vars(-SEX), .funs = uus_funktsioo
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 # 1
 test_function("mutate_if",
@@ -619,10 +610,17 @@ success_msg("Ülesanne tehtud. Tubli!")
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:cfbdcdcc57
+---
+
 ## Andmestike ühendamine
 
-
+```yaml
+type: NormalExercise
+key: cfbdcdcc57
+lang: r
+xp: 100
+skills: 1
+```
 
 Paketis **dplyr** on olemas valik funktsioone, mis on mõeldud andmestike ühendamiseks:
 
@@ -643,10 +641,7 @@ Töölaual on olemas kaks andmestikku:
 
 Pakett **dplyr** on juba aktiveeritud.
 
-
-
-
-*** =instructions
+`@instructions`
 - **Ülesanne 1** Teisenda esmalt mõlemas andmestikus faktortunnused tavaliseks tekstiks, selleks täienda etteantud koodi. Teisendatud andmestikud omista muutujatele `A1` ja `B1`. Edasi kasuta neid andmestikke.
 
 - **Ülesanne 2** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB1`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kelle kohta on olemas info mõlemas andmestikus, kuid veergudest ainult need, mis on olemas andmestikus `B`. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
@@ -654,15 +649,11 @@ Pakett **dplyr** on juba aktiveeritud.
 - **Ülesanne 3** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B`ning  kõik veerud mõlemast andmestikust.
  Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
 
- 
-
-
-
-*** =hint
+`@hint`
 -  
--  
+-
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
 B <- read.csv2("http://kodu.ut.ee/~annes/R/B.csv", nrows = 160)
@@ -672,7 +663,7 @@ library(dplyr)
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vaata anmdestikud üle
 str(A)
@@ -693,7 +684,7 @@ AB2 <- ___ %>% _________________
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Vaata andmestikud üle
 str(A)
@@ -714,9 +705,7 @@ AB2 <- A1 %>% inner_join(B1, by = "id")
 
 ```
 
-
-
-*** =sct
+`@sct`
 ```{r}
 test_predefined_objects("A", 
                         eq_condition = "equivalent",
