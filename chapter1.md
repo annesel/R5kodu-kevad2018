@@ -19,9 +19,9 @@ Paketi **dplyr** funktsioonidest `mutate()` on abiks kui on vaja andmestikku uus
 Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
 
 `@instructions`
-- **Ülesanne 1** Aktiveeri pakett **dplyr**.
-- **Ülesanne 2** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate KMI väärtus (tunnus nimega `kmi`) ja tunnus, mis sellesama KMI põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`, tõeväärtusvektor tekita nii, et väärtus `TRUE` vastaks madalamale KMI väärtusele.
-- **Ülesanne 3** Vaata üle uue andmestiku struktuur käsuga `str()`.
+- **Ülesanne 1:** Aktiveeri pakett **dplyr**.
+- **Ülesanne 2:** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate kehamassiindeksi  väärtus ehk KMI (tunnus nimega `kmi`) ja tunnus, mis sellesama indeksi põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`, tõeväärtusvektor tekita nii, et väärtus `TRUE` vastaks madalamale KMI väärtusele.
+- **Ülesanne 3:** Vaata üle uue andmestiku struktuur käsuga `str()`.
 
 `@hint`
 - Kui kirjutad `mutate()` käsku uute tunnuste definitsioonid, siis vaata, et KMI arvutus eelneks kaalugruppide määramisele, sest siis on KMI väärtust juba vaja kasutada.
@@ -109,7 +109,7 @@ test_function(name = "ifelse",
               not_called_msg = "Teises ülesandes pead kasutama funktsiooni `ifelse()`.",
               args_not_specified_msg = paste("Käsu `ifelse()` argumentidest peab " ,
                                 c("esimene olema loogiline test", 
-                                "teine  määratav väärtus, kui loogilise testi tulemus on `TRUE`", 
+                                "teine olema  määratav väärtus, kui loogilise testi tulemus on `TRUE`", 
                                 "kolmas olema `FALSE` tulemuse korral määratav väärtus."))
                                 ,
               incorrect_msg =  paste("Käsule `ifelse()` on antud vale väärtus ", c("esimeseks", "teiseks", "kolmandaks"), " argumendiks.")   )
