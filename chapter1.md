@@ -40,15 +40,15 @@ head(A)
 
 
 # Ülesanne 1: aktiveeri pakett
-_____________
+_______(______)
 
 
 # Ülesanne 2: lisa tunnused
-A1 <- mutate(___________________)
+A1 <- mutate(_____, kmi = _____, kaalugrupp = ifelse(_____, _____, _____))
 
 
 # Ülesanne 3: vaata tulemust
-____________
+______(_____)
 
 
 ```
@@ -183,22 +183,20 @@ rm(A)
 # Vaata andmestik üle
 str(A1)
 
-
 # Ülesanne 1: leia tabel
 tabel <- A1 %>%   
-            ______________ %>% 
-                    ____________________________
+            _______(_____, _____) %>% 
+                    ________(n = ______, kesk.vanus = _____, kesk.kmi = _____, visiit.osak = _____)
 tabel
 
 # Ülesanne 2: leia mis grupp on kõige madalama arstivisiidil käimise osakaaluga.
-madal <- list(sugu = ___, elukoht = ___)
+madal <- list(sugu = _____, elukoht = _____)
 ```
 
 `@solution`
 ```{r}
 # Vaata andmestik üle
 str(A1)
-
 
 # Ülesanne 1: leia tabel
 tabel <- A1 %>% 
@@ -300,7 +298,7 @@ Aktiveeritud on pakett **dplyr**.
 ```
 
 `@instructions`
-- **Ülesanne 1:** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
+- **Ülesanne 1:** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust  `B` need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
 - **Ülesanne 2:** Täienda koodi kasutades funktsioone  `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
 
 `@hint`
@@ -321,7 +319,7 @@ names(B)
 dim(B)
 
 # Ülesanne 1: Alamandmestiku valik
-B1 <- __________________________________
+B1 <- _____ %>% _______(_______)
 
 
 
@@ -773,7 +771,7 @@ test_function(name = "inner_join",
               index = 1,
               eval = TRUE,
              eq_condition = "equivalent",
-             not_called_msg = "Pead kolmandas ülesandes  teises  funktsiooni `inner_join()`.",
+             not_called_msg = "Pead kolmandas ülesandes  kasutama  funktsiooni `inner_join()`.",
              args_not_specified_msg = paste("Käsus `inner_join()`  ", c("saadetakse esimene liidetav andmestik läbi aheldamisoperaatori", " tuleb märkida teine liidetav andmestik", "tuleb määrata võtmetunnus `by`", "." )),
              incorrect_msg = paste("Muuda `inner_join()` käsus ", c("läbi aheldamise saadetav andmestik.", " teine liidetav andmestik. ", "argumendi `by` väärtus.")) )
 ,
@@ -782,7 +780,7 @@ test_function(name = "inner_join",
               index = 1,
              eval = TRUE,
              eq_condition = "equivalent",
-             not_called_msg = "Pead kolmandas ülesandes  teises  funktsiooni `inner_join()`",
+             not_called_msg = "Pead kolmandas ülesandes  kasutama  funktsiooni `inner_join()`",
              args_not_specified_msg = paste("Käsus `inner_join()`  tuleb määrata võtmetunnus `by`.", "." ),
              incorrect_msg = paste("Muuda `inner_join()` käsus argumendi `by` väärtus.")) 
 )

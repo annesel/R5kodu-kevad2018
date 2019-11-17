@@ -262,17 +262,21 @@ test_function(name = "as.Date",
               eq_condition = "equivalent",
               not_called_msg = "Esimeses ülesandes saad kasutada funktsiooni `as.Date`.",
               args_not_specified_msg = c("Määra `as.Date` esimeseks argumendiks vektor `apelsinid$age`", "Pead `as.Date` funktsiooni lisama `origin` argumendi."),
-              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vale tunnuse andnud", "Oled `as.Date`  käsus vale `origin` argumendi väärtuse määranud. Kontrolli kuupäeva kirjapilti: *aasta-kuu-päev*.))
-              
-test_data_frame("apelsinid", columns = "kuupaev",
-            undefined_msg = "Andmetabel `apelsinid` on kustutatud!!.",
-            undefined_cols_msg = "Andmestikus `apelsinid` pole veergu nimega `kuupaev`.",
-            incorrect_msg = "Andmetabeli `apelsinid`  veeru `kuupaev` väärtused ei ole korrektsed. Proovi uuesti." )
+              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vale tunnuse andnud", 
+                                 "Oled `as.Date` käsus vale `origin` argumendi väärtuse määranud. Kontrolli kuupäeva kirjapilti, see peab olema kujul *aasta-kuu-päev*."))
 
 
 test_object("ajad", 
             undefined_msg = "Muutuja  `ajad` on defineerimata.",
             incorrect_msg = "Muutuja  `ajad` väärtus ei ole korrektne. Proovi uuesti. " )
+
+
+
+
+test_data_frame("apelsinid", columns = "kuupaev",
+            undefined_msg = "Andmetabel `apelsinid` on kustutatud!.",
+            undefined_cols_msg = "Andmestikus `apelsinid` pole veergu nimega `kuupaev`.",
+            incorrect_msg = "Andmetabeli `apelsinid`  veeru `kuupaev` väärtused ei ole korrektsed. Proovi uuesti." )
 
 
 
@@ -283,9 +287,12 @@ test_function(name = "difftime",
               index = 1,
               eq_condition = "equivalent",
               not_called_msg = "Viimases ülesandes kasuta  funktsiooni `difftime`.",
-              args_not_specified_msg = c("Käsus `difftime` peab esimene argument olema ajavektor.","Käsus `difftime` peab teine argument ka olema ajavektor.",  
-              "Määra `difftime` käsus argumendi `units` väärtus `'weeks'`."),
-              incorrect_msg =  c("Käsus `difftime` on esimesel kohal olev ajavektor vale.", "Käsus `difftime` on teisel kohal olev ajavektor vale.", "Oled `difftime` käsus argumendi `units` väärtuse valesti määranud, ühikuks peab olema nädal."))
+              args_not_specified_msg = c("Käsus `difftime` peab esimene argument olema ajavektor.",
+										 "Käsus `difftime` peab teine argument ka olema ajavektor.",  
+                                         "Määra `difftime` käsus argumendi `units` väärtus `'weeks'`."),
+              incorrect_msg =  c("Käsus `difftime` on esimesel kohal olev ajavektor vale.", 
+                                 "Käsus `difftime` on teisel kohal olev ajavektor vale.", 
+                                 "Oled `difftime` käsus argumendi `units` väärtuse valesti määranud, ühikuks peab olema nädal."))
               
 
 test_object("nadalad", 

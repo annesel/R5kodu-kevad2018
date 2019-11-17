@@ -48,7 +48,7 @@ rm(A0)
 `@sample_code`
 ```{r}
 # Ülesanne 1: aktiveeri pakett
-_______________________
+_______(_____)
 
 
 # Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
@@ -93,7 +93,7 @@ test_function(name = "library",
 test_data_frame("tabel1", columns = c("kmi", "sirutus"),
             undefined_msg = "Andmetabel `tabel1` on defineerimata.",
             undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale. Või pole tabel data.table-tüüpi!"),
-            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused/sisu valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
+            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused/sisu valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks (üle 50 aastane **ja** üle 80 kg kaaluv)." )
 
 test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata.")
 
@@ -107,9 +107,9 @@ test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kasutad ikka **da
  
 #2
 test_or(
-test_student_typed(", by = .(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
-test_student_typed(", by = list(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
-test_student_typed(", by = c('sugu', 'elukoht')",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed, kasuta selleks listi.")
+test_student_typed(", by = .(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina ja nõutud järjekorras."),
+test_student_typed(", by = list(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina ja nõutud järjekorras."),
+test_student_typed(", by = c('sugu', 'elukoht')",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed, kasuta selleks listi. Kontrolli üle ka grupeerivate tunnsute järjestus.")
 )
 
  
@@ -161,7 +161,7 @@ Pakett **data.table** on juba aktiveeritud.
 `@instructions`
 - **Ülesanne 1:** Kontrolli, kas andmestik on *data.table* tüüpi, kasutades funktsiooni `is.data.table()`. 
 - **Ülesanne 2:** Kasutades  **data.table** süntaksit, teisenda tunnus `loigunr`, mis on esialgu tüüpi `character`, arvuliseks, täpsemalt täisarvuks. Ära tekita uut tabelit, tee muudatus andmestiku `tekstid` sees.
-- **Ülesanne 3:** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega *A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`.
+- **Ülesanne 3:** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega * A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`.
 
 `@hint`
 - Lõigu numbri tüübi teisendamisel pead tegema teisenduse andmestiku sees, st kasutama `:=` operaatorit kujul `loigunr := as.integer(loigunr)`.
@@ -239,11 +239,10 @@ test_data_frame("tekstid",
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestik `tekstid` on kadunud! Alusta uuesti.",
                 undefined_cols_msg = "Veerg tekstilõigu numbriga on andmestikust kadunud.",
-                incorrect_msg = "Veeru `loigunr` väärtus on vale.")
+                incorrect_msg = "Veeru `loigunr` väärtus on vale. Kontrolli teisendust ülesandes 2.")
 
 
 # 3
-
 test_student_typed(", by = hinnang",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeeriva tunnuse nime. Jutumärke selle tunnuse nime ümber pole vaja!")
 
 
@@ -258,7 +257,7 @@ test_data_frame("valik",
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestikku `valik` pole! Alusta uuesti.",
                 undefined_cols_msg = "Andmestikus `valik` pole kõiki veerge mis vaja.",
-                incorrect_msg = "Andmestikus `valik` on mingid väärtused valed.")
+                incorrect_msg = "Andmestikus `valik` on midagi valesti. Kontrolli üle, kas oled õiged read välja filtreerinud. Kantsulgudes peab esimesel kohal olema ridade valiku tingimus, näiteks nii `loigunr > 2 & startsWith(tekst, 'A')`.")
 
 
 
