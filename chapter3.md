@@ -266,17 +266,19 @@ test_function(name = "as.Date",
                                  "Oled `as.Date` käsus vale `origin` argumendi väärtuse määranud. Kontrolli kuupäeva kirjapilti, see peab olema kujul *aasta-kuu-päev*."))
 
 
-test_object("ajad", 
-            undefined_msg = "Muutuja  `ajad` on defineerimata.",
-            incorrect_msg = "Muutuja  `ajad` väärtus ei ole korrektne. Proovi uuesti. " )
 
-
-
-
-test_data_frame("apelsinid", columns = "kuupaev",
+test_data_frame(name = "apelsinid", 
+                columns = "kuupaev",
             undefined_msg = "Andmetabel `apelsinid` on kustutatud!.",
             undefined_cols_msg = "Andmestikus `apelsinid` pole veergu nimega `kuupaev`.",
             incorrect_msg = "Andmetabeli `apelsinid`  veeru `kuupaev` väärtused ei ole korrektsed. Proovi uuesti." )
+
+
+
+test_object(name = "ajad", 
+            undefined_msg = "Muutuja  `ajad` on defineerimata.",
+            incorrect_msg = "Muutuja  `ajad` väärtus ei ole korrektne. Proovi uuesti. " )
+
 
 
 
