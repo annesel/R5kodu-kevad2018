@@ -65,13 +65,13 @@ library(dplyr)
 
 
 # Ülesanne 2: lisa tunnused
-#A1 <- mutate(A, 
-#            kmi = kaal/(kasv/100)^2, 
-#            kaalugrupp = ifelse(kmi <= 25, "ala voi normkaal", "ylekaal"))
+A1 <- mutate(A, 
+            kmi = kaal/(kasv/100)^2, 
+            kaalugrupp = ifelse(kmi <= 25, "ala voi normkaal", "ylekaal"))
 
 
 # Ülesanne 3: vaata tulemust
-#str(A1)
+str(A1)
 ```
 
 `@sct`
