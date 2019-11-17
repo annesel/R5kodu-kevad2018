@@ -300,12 +300,12 @@ Aktiveeritud on pakett **dplyr**.
 ```
 
 `@instructions`
-- **Ülesanne 1** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
-- **Ülesanne 2** Täienda koodi kasutades funktsioone  `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
+- **Ülesanne 1:** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
+- **Ülesanne 2:** Täienda koodi kasutades funktsioone  `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
 
 `@hint`
 - Aktiveerima peab paketi **reshape2**, et kasutada funktsiooni `melt()`.
-- Kuna alamandmestikus `B1` on ainult testitulemused ja pole identifitseerivaid tunnuseid, siis andmestiku pikale kujule viimise võib kirja panna nii `B1 %>% melt()`. Tulemuseks on andmetabel kus ühes veerus on tunnuste nimed, teises tunnuste  väärtused.
+- Kuna alamandmestikus `B1` on ainult testitulemused ja pole identifitseerivaid tunnuseid, siis andmestiku pikale kujule viimise võib kirja panna nii `B1 %>% melt()`. Tulemuseks on andmetabel, kus ühes veerus on tunnuste nimed, teises tunnuste  väärtused.
 
 `@pre_exercise_code`
 ```{r}
@@ -327,7 +327,7 @@ B1 <- __________________________________
 
 # Ülesanne 2: Täienda koodi
 library(____________)
-tabel <- B1 %>% __________________  %>%  _____________(___________)  %>%  ______________(.funs = c("mean", "sd", "min", "max"))
+tabel <- B1 %>% _____________()  %>%  _____________(___________)  %>%  ______________(.funs = c("mean", "sd", "min", "max"))
 arrange(tabel, variable)
  
 
@@ -359,8 +359,8 @@ test_function("select",
               eval = TRUE,
               eq_condition = "equivalent",
               not_called_msg = "Kasuta esimeses ülesandes funktsiooni `select()`.",
-              args_not_specified_msg = paste("Funktsioonis `select()` pead määrama  argumendi `.data`" ),
-              incorrect_msg = paste("Funktsioonis `select()` on argumendi `.data` väärtus vale."))
+              args_not_specified_msg = paste("Funktsioonile `select()` pead aheldamisega saatma esimeseks argumendiks andmestiku `B`." ),
+              incorrect_msg = paste("Funktsioonis `select()` on argumendi `.data` väärtus vale. Selleks andmestikuks peab olema `B`."))
        
 
 
@@ -369,8 +369,8 @@ test_function("starts_with",
               eval = TRUE,
               eq_condition = "equivalent",
               not_called_msg = "Kasuta esimeses ülesandes funktsiooni `starts_with()`.",
-              args_not_specified_msg = paste("Funktsioonis `starts_with()` pead määrama  argumendiks sobiva tunnusenime alguse jutumärkides." ),
-              incorrect_msg = paste("Funktsioonis `starts_with()`  on  tunnusenime algus vale, kirjuta see samal kujul nagu ülesande tekstis."))
+              args_not_specified_msg = paste("Funktsioonis `starts_with()` pead määrama  argumendiks sobiva tunnusenime alguse jutumärkides. Praegu on selleks `'test'`." ),
+              incorrect_msg = paste("Funktsioonile `starts_with()`    antud tunnusenime algus on vale, kirjuta see samal kujul nagu ülesande tekstis."))
        
 
 test_data_frame("B1",
@@ -401,7 +401,7 @@ test_function("melt",
               eq_condition = "equivalent",
               not_called_msg = "Kasuta teises ülesandes funktsiooni `melt()`.",
               args_not_specified_msg = paste("Funktsioonile `melt()` peab aheldamise kaudu argumendiks minema andmestik `B1`. Teisi argumente antud funktsioonis pole vaja täpsustada." ),
-              incorrect_msg = paste("Funktsioonile `melt()` saadetakse argumendiks vale andmestik."))
+              incorrect_msg = paste("Funktsioonile `melt()` saadetakse argumendiks vale andmestik. KAsuta andmestikku `B1`."))
        
 
 
@@ -412,7 +412,7 @@ test_function("group_by",
               eval = TRUE,
               eq_condition = "equivalent",
               not_called_msg = "Kasuta teises ülesandes funktsiooni `group_by()`.",
-              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma pikas formaadis andmestiku. Grupeerivaks tunnuseks peab minema veerg, kus on kirjas testide nimed." ),
+              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma pikas formaadis andmestiku. Grupeerivaks tunnuseks peab minema veerg, kus on kirjas testide nimed. " ),
               incorrect_msg = paste("Funktsiooni `group_by()`  rakendatakse valele andmestikule. "))
        
 
@@ -426,7 +426,7 @@ test_function("summarise_all",
               eq_condition = "equivalent",
               not_called_msg = "Kasuta teises ülesandes funktsiooni `summarise_all()`.",
               args_not_specified_msg = paste("Funktsiooni `summarise_all()`", 
-                                c(" esimeseks argumendiks peab sattuma grupeeritud andmestik.", "teiseks arumendiks peab olema vektor funktsioonide nimedega.") ),
+                                c(" esimeseks argumendiks peab sattuma grupeeritud andmestik.", "teiseks arumendiks peab olema vektor funktsioonide nimedega, mida tahad kasutada.") ),
               incorrect_msg = paste("Funktsiooni `summarise_all()`  ",  c(" rakendatakse  valele andmestikule.", " funktsioonide nimekiri pole sama, mis etteantud koodis. Ära kustuta, ega muuda seda kohta koodist.")   ))
  
  
