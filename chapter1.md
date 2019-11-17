@@ -164,8 +164,8 @@ Töölaual on olemas andmestik `A1` eelmisest ülesandest. Andmestikus on kirjas
 Aktiveeritud on pakett **dplyr**.
 
 `@instructions`
-- **Ülesanne 1** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.  Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
-- **Ülesanne 2** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
+- **Ülesanne 1:** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.  Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
+- **Ülesanne 2:** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
 
 `@hint`
 - Kasuta funktsiooni `group_by()`, et määrata andmestikule grupeering soo ja elukoha põhjal
@@ -220,8 +220,8 @@ test_function("group_by",
               args = c(".data"), index = 1,
               eval = TRUE,
               eq_condition = "equivalent",
-              not_called_msg = "Esimeses ülesandes peab andmestiku grupeerima enne kui hakata arvutusi tegeama.",
-              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma  andmestiku `A1`." ),
+              not_called_msg = "Esimeses ülesandes peab andmestiku grupeerima enne kui hakata arvutusi tegema. Kasuta selleks `group_by()` funktsiooni.",
+              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma  andmestiku `A1`. Grupeerivad tunnused anna enne järjekorras: `sugu, elukoht`" ),
               incorrect_msg = paste("Funktsiooni `group_by()`  rakendatakse valele andmestikule. "))
        
 
@@ -245,8 +245,8 @@ test_data_frame("tabel",
                 columns = c("sugu", "elukoht",  "n",  "kesk.vanus", "kesk.kmi", "visiit.osak"),
                 eq_condition = "equivalent",
                 undefined_msg = "Tabelit `tabel` pole tekitatud!",
-                undefined_cols_msg = paste("Tabelis `tabel` on mõni nõutud veerg puudu või on veeru nimi vale! "),
-                incorrect_msg = paste("Tabelis `tabel` on mõni veerg valede väärtustega või on veeru nimi vale!"))
+                undefined_cols_msg = paste("Tabelis `tabel` on mõni nõutud veerg puudu või on mõni veeru nimi vale.  Kontrolli ka, kas andmestiku grupeerimine käis nõutud järjekorras: `group_by(sugu, elukoht)`."),
+                incorrect_msg = paste("Tabelis `tabel` on mõni veerg valede väärtustega või on mõni veeru nimi vale.  Kontrolli ka, kas andmestiku grupeerimine käis nõutud järjekorras: `group_by(sugu, elukoht)`."))
                 
                 
  
