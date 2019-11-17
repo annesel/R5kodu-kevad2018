@@ -29,9 +29,9 @@ Töölaual on olemas andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, su
 Ülesannetes nõutud arvutustes ära kasuta ümardamist.
 
 `@instructions`
-- **Ülesanne 1** Aktiveeri pakett **data.table**.
-- **Ülesanne 2** Kasutades **data.table** süntaksit, tekita tabel `tabel1`, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus (tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). Prindi tulemus ekraanile.
-- **Ülesanne 3** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus (`kesk.vanus`) ja keskmine pikkus (`kesk.pikkus`) neile, kes pole käinud arstivisiidil (tunnuse `visiit` väärtus on `FALSE`). Määra grupeering nii, et tulemustabelis on soo tunnus esimene veerg ning elukoht teine. Prindi tulemus ekraanile.
+- **Ülesanne 1:** Aktiveeri pakett **data.table**.
+- **Ülesanne 2:** Kasutades **data.table** süntaksit, tekita tabel `tabel1`, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus (tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). Prindi tulemus ekraanile.
+- **Ülesanne 3:** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus (`kesk.vanus`) ja keskmine pikkus (`kesk.pikkus`) neile, kes pole käinud arstivisiidil (tunnuse `visiit` väärtus on `FALSE`). Määra grupeering nii, et tulemustabelis on soo tunnus esimene veerg ning elukoht teine. Prindi tulemus ekraanile.
 
 `@hint`
 - Teises ülesandes peab KMI väärtuse arvutama ja omistama veergu nimega `kmi`, teise tunnuse `sirutus` väärtustega mingit teisendust pole vaja teha. Arvutatav tunnus ja valitud veeru nimi peab olema antud listina:  `.(kmi = _____, sirutus)` või `list(kmi = _____, sirutus)`.
@@ -125,6 +125,8 @@ test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printim
  
 
  
+            
+success_msg("Tubli!")
 ```
 
 ---
@@ -150,20 +152,21 @@ kus
 - `by` määrab vajadusel grupitunnuse `j` tehtavateks arvutustesse.
 
 
-Töölaual on andmestik `tekstid`, mis sisaldab tekstilõike ajalehe Postimees artiklitest. Kõigil lõikudel on ka emotsionaalne hinnang st kas lugejad on hinnanud lõigu negatiivseks, postiivseks, neutraalseks või vastuoluliseks(tunnus `hinnang`). Tekstilõigud on andmestikus tunnuse `tekst` nime all.
+Töölaual on andmestik `tekstid`, mis sisaldab tekstilõike ajalehe Postimees artiklitest. Kõigil lõikudel on ka emotsionaalne hinnang st kas lugejad on hinnanud lõigu negatiivseks, postiivseks, neutraalseks või vastuoluliseks (tunnus `hinnang`). Tekstilõigud on andmestikus tunnuse `tekst` nime all.
 
 Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
 
 Pakett **data.table** on juba aktiveeritud.
 
 `@instructions`
-- **Ülesanne 1** Kontrolli, kas andmestik on *data.table* tüüpi, kasutades funktsiooni `is.data.table()`. 
-- **Ülesanne 2** Kasutades  **data.table** süntaksit, teisenda tunnus `loigunr`, mis on esialgu tüüpi `character`, arvuliseks, täpsemalt täisarvuks. Ära tekita uut tabelit, tee muudatus andmestiku `tekstid` sees.
-- **Ülesanne 3** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega *A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`.
+- **Ülesanne 1:** Kontrolli, kas andmestik on *data.table* tüüpi, kasutades funktsiooni `is.data.table()`. 
+- **Ülesanne 2:** Kasutades  **data.table** süntaksit, teisenda tunnus `loigunr`, mis on esialgu tüüpi `character`, arvuliseks, täpsemalt täisarvuks. Ära tekita uut tabelit, tee muudatus andmestiku `tekstid` sees.
+- **Ülesanne 3:** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega *A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`.
 
 `@hint`
 - Lõigu numbri tüübi teisendamisel pead tegema teisenduse andmestiku sees, st kasutama `:=` operaatorit kujul `loigunr := as.integer(loigunr)`.
 - Kolmandas ülesandes saab sobivad read valida näiteks tingimusega `loigunr > 2 & startsWith(tekst, "A")`.
+- Kolmandas ülesandes saab loendamiseks kasutada `.N` funktsiooni.
 
 `@pre_exercise_code`
 ```{r}
@@ -179,14 +182,14 @@ rm(n)
 `@sample_code`
 ```{r}
 # Ülesanne 1: kontrolli, kas andmestik on data.table-tüüpi
-_______________________
+_____.______._____(_____)
 
 # Ülesanne 2: tee tüübiteisendus
-tekstid[_________]
+tekstid[,_________]
 
 
 # Ülesanne 3: vali read ja leia sagedused (ära pane veergudele uusi nimesid)
-valik <- tekstid[___________]
+valik <- tekstid[_____, _____, by = _____]
 
 ```
 
@@ -261,7 +264,7 @@ test_data_frame("valik",
 
                 
                 
-success_msg("Väga tubli! Viimane ülesanne sai tehtud!")               
+success_msg("Väga tubli!")               
  
 
 

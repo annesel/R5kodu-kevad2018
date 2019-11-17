@@ -475,8 +475,8 @@ Töölaual on olemas andmestikud `mass` (tuttav praktikumist) ja `antropo`. Andm
 Aktiveeritud on pakett **dplyr**.
 
 `@instructions`
-- **Ülesanne 1**  Teisenda andmestikus `mass` kõik tunnused, mis on tüüpi `factor` tavaliseks tekstiks ehk tüüpi `character`. Selleks täienda antud koodi sobivalt. Teisendatud tunnustega andmestik nimeta `mass_char`. Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
-- **Ülesanne 2** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`.
+- **Ülesanne 1:**  Teisenda andmestikus `mass` kõik tunnused, mis on tüüpi `factor` tavaliseks tekstiks ehk tüüpi `character`. Selleks täienda antud koodi sobivalt. Teisendatud tunnustega andmestik nimeta `mass_char`. Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
+- **Ülesanne 2_** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`.
 
 `@hint`
 - Selleks, et kontrollida, kas tunnus on faktortüüpi, saab kasutada funktsiooni `is.factor()`.
@@ -535,11 +535,11 @@ test_function("mutate_if",
               not_called_msg = "Kasuta esimeses ülesandes funktsiooni `mutate_if()`.",
               args_not_specified_msg = paste("Funktsiooni `mutate_if()`", 
                                 c(" esimeseks argumendiks peab sattuma andmestik `mass`, st see saadetakse aheldamisega funktsiooni esimeseks argumendiks.", 
-                                " peab määrama loogilise kontrolli, millele vastavatele veergudele hakatakse teisendust tegema. Kontrollima peab, kas veerus on `factor`-tüüpi tunnus.", 
-                                " peab määrama teisenduse, mida valitud veergudele rakendada, see peaks veeru tüübiks määrama `character`") ),
+                                " peab määrama loogilise kontrolli (`.predicate`), millele vastavatele veergudele hakatakse teisendust tegema. Kontrollima peab, kas veerus on `factor`-tüüpi tunnus.", 
+                                " peab määrama teisenduse (`.funs`), mida valitud veergudele rakendada, see peaks veeru tüübiks määrama `character`") ),
               incorrect_msg = paste("Funktsiooni `mutate_if()`  ",  c(" rakendatakse  valele andmestikule.", 
-              " on antud vale tingimus, millele veerud peavad vastama.", 
-              " on määratud vale teisendus.")   ))
+              " on antud vale tingimus (`.predicate`), millele veerud peavad vastama.", 
+              " on määratud vale teisendus (`.funs`).")   ))
  
 
  
@@ -642,15 +642,14 @@ Töölaual on olemas kaks andmestikku:
 Pakett **dplyr** on juba aktiveeritud.
 
 `@instructions`
-- **Ülesanne 1** Teisenda esmalt mõlemas andmestikus faktortunnused tavaliseks tekstiks, selleks täienda etteantud koodi. Teisendatud andmestikud omista muutujatele `A1` ja `B1`. Edasi kasuta neid andmestikke.
+- **Ülesanne 1:** Teisenda esmalt mõlemas andmestikus faktortunnused tavaliseks tekstiks, selleks täienda etteantud koodi. Teisendatud andmestikud omista muutujatele `A1` ja `B1`. Edasi kasuta neid andmestikke.
 
-- **Ülesanne 2** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB1`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kelle kohta on olemas info mõlemas andmestikus, kuid veergudest ainult need, mis on olemas andmestikus `B`. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
+- **Ülesanne 2:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB1`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kelle kohta on olemas info mõlemas andmestikus, kuid veergudest ainult need, mis on olemas andmestikus `B`. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
 
-- **Ülesanne 3** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B`ning  kõik veerud mõlemast andmestikust.
- Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
+- **Ülesanne 3:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B` ning  kõik veerud mõlemast andmestikust. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
 
 `@hint`
--  
+-  Esimeses ülesandes kasuta faktortunnuste sõnedeks teisendamisel argumente `.predicate = is.factor` ja `.funs =as.character`.
 -
 
 `@pre_exercise_code`
@@ -671,15 +670,15 @@ str(B)
 
 
 # Ülesanne 1:  Teisenda tunnuse tüüp
-A1 <- A %>% mutate_if(__________)
-B1 <- B %>% mutate_if(__________)
+A1 <- A %>% mutate_if(_____, _____)
+B1 <- B %>% mutate_if(_____, _____)
 
 
 # Ülesanne 2: ühenda andmestikud
-AB1 <- ___ %>% _________________
+AB1 <- ___ %>% _______(_____, _____)
 
 # Ülesanne 3: ühenda andmestikud
-AB2 <- ___ %>% _________________
+AB2 <- ___ %>% _______(_____, _____)
 
 
 ```

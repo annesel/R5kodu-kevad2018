@@ -23,10 +23,9 @@ Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
 Töölaual on aktiveeritud pakett `stringr`.
 
 `@instructions`
-- **Ülesanne 1** Kasutades paketi `stringr` sobivat käsku tuvasta, millistes tekstilõikudes esineb string 'Eesti' või 'eesti'. Tulemuseks peaks olema tõevektor (`TRUE` kui otsitav väärtus on tekstis), omista see muutujale `esineb`. Väike/suurtähe võimaluse otsitavas tekstis saab kirja panna järgnevalt `[Ss]uurtäht`.
-- **Ülesanne 2** Kasutades eelmises ülesandes tekitatud tunnust leia käsuga `table` sagedustabel, kus oleks näha tekstilõigu emotsionaalsete hinnangute kaupa ülalvaadatud stringi esinemissagedused.
-Määra emotsiooni tunnus sagedustabelis reatunnuseks. Tekkiv sagedustabel omista muutujale `sagedustabel`, prindi see ekraanile.
-- **Ülesanne 3** Kasutades eelnevalt tekitatud sagedustabeli-objekti leia tekstilõikude hinnangute jaotus mõlemas tekstilõikude grupis (st nii nende lõikude osas, kus stringi ei esinenud, kui selles grupis, kus esines). Omista saadud tabel muutujale `tinglikjaotus`, prindi see ekraanile.
+- **Ülesanne 1:** Kasutades paketi `stringr` sobivat käsku tuvasta, millistes tekstilõikudes esineb string 'Eesti' või 'eesti'. Tulemuseks peaks olema tõevektor ( väärtusega `TRUE` kui otsitav väärtus on tekstis ja väärtusega `FALSE` vstasel juhul), omista see muutujale `esineb`. Väike/suurtähe võimaluse otsitavas tekstis saab kirja panna järgnevalt `[Ss]uurtäht`.
+- **Ülesanne 2:** Kasutades eelmises ülesandes tekitatud tunnust leia käsuga `table` sagedustabel, kus oleks näha tekstilõigu emotsionaalsete hinnangute kaupa ülalvaadatud stringi esinemissagedused. Määra emotsiooni tunnus sagedustabelis reatunnuseks. Tekkiv sagedustabel omista muutujale `sagedustabel`, prindi see ekraanile.
+- **Ülesanne 3:** Kasutades eelnevalt tekitatud sagedustabeli-objekti leia tekstilõikude hinnangute jaotus mõlemas tekstilõikude grupis (st nii nende lõikude osas, kus stringi ei esinenud, kui selles grupis, kus esines). Omista saadud tabel muutujale `tinglikjaotus`, prindi see ekraanile.
 
 `@hint`
 - Esimeses ülesandes kasuta funktsiooni `str_detect` või  `str_count`, kus määra `pattern` argumendiks `[Ee]esti`. Käsk `str_count` annab tulemuseks esinemiste arvu, seega nõutud tõeväärtustega vektori saamiseks peab veel kontrollima, kas tulemused on üle nulli.
@@ -51,14 +50,14 @@ str(tekstid)
 
 
 # Ülesanne 1: tuvasta stringi esinemine
-esineb <- _______________________
+esineb <- ________(_____, _____)
 
 # Ülesanne 2: sagedustabeli leidmine
-sagedustabel <- table(______________)
+sagedustabel <- table(_____, _____)
 sagedustabel
 
 # Ülesanne 3: osakaalude leidmine
-tinglikjaotus <- __________________
+tinglikjaotus <- ______._____(_____, _____)
 tinglikjaotus
 
 ```
@@ -200,9 +199,9 @@ Töölaual on andmestik `apelsinid`.
 Mõõdetud on apelsinipuude tüve ümbermõõtu (`circumference`). Iga puud on mõõdetud korduvalt, mõõtmise aeg on veerus `age`, mis näitab puu vanust päevades mõõtmishetkel. Puu vanust hakati lugema alates katse algusest, mis oli 1968 aasta 31. detsember. Kõiki puid mõõdeti samadel päevadel.
 
 `@instructions`
-- **Ülesanne 1** Lisa andmestikku uus tunnus nimega `kuupaev`, mis näitaks mõõtmiste kuupäevi kujul "YYYY-MM-DD".
-- **Ülesanne 2** Vali kuupäeva veerust unikaalsed väärtused ja omista muutujale `ajad`. Veendu, et need on kasvavas järjekorras.
-- **Ülesanne 3** Kasutades funktsiooni `difftime` ja eelmises sammus tehtud muutujat `ajad`, leia mõõtmistevahelised ajad nädalates. Tutvu ka funktsiooni `difftime` abifailiga. Arvutuste tulemus omista muutujale `nadalad`.
+- **Ülesanne 1:** Lisa andmestikku uus tunnus nimega `kuupaev`, mis näitaks mõõtmiste kuupäevi kujul "YYYY-MM-DD".
+- **Ülesanne 2:** Vali kuupäeva veerust unikaalsed väärtused ja omista muutujale `ajad`. Veendu, et need on kasvavas järjekorras.
+- **Ülesanne 3:** Kasutades funktsiooni `difftime` ja eelmises sammus tehtud muutujat `ajad`, leia mõõtmistevahelised ajad nädalates. Tutvu ka funktsiooni `difftime` abifailiga. Arvutuste tulemus omista muutujale `nadalad`.
 
 `@hint`
 - Kuupäevad saad luua `as.Date` funtksiooniga, määrama peab ka `origin` argumendi - see on kuupäev milest alates päevi hakati loendama.
@@ -222,7 +221,7 @@ head(apelsinid)
 
 
 # Ülesanne 1: Lisa kuupäeva tunnus andmestikku
-apelsinid$kuupaev <- _______________________
+apelsinid$kuupaev <- ____._______(_____, origin = ________)
 
 
 # Ülesanne 2: Moodusta unikaalsete väärtuste vektor
@@ -230,7 +229,7 @@ ajad <- ______(apelsinid$kuupaev)
 
 
 # Ülesanne 3: Kui pikk on mõõtmistevaheline aeg nädalates?
-nadalad <- difftime(___________)
+nadalad <- difftime(_____, _____, units = _____)
 nadalad
 
 ```
@@ -262,8 +261,8 @@ test_function(name = "as.Date",
               index = 1,
               eq_condition = "equivalent",
               not_called_msg = "Esimeses ülesandes saad kasutada funktsiooni `as.Date`.",
-              args_not_specified_msg = c("Määra `as.Date` esimeseks argumendiks vektor `age`", "Pead `as.Date` funktsiooni lisama `origin` arguemndi."),
-              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vale tunnuse andnud", "Oled `as.Date`  käsus vale `origin` argumendi väärtuse määranud."))
+              args_not_specified_msg = c("Määra `as.Date` esimeseks argumendiks vektor `apelsinid$age`", "Pead `as.Date` funktsiooni lisama `origin` argumendi."),
+              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vale tunnuse andnud", "Oled `as.Date`  käsus vale `origin` argumendi väärtuse määranud. Kontrolli kuupäeva kirjapilti: *aasta-kuu-päev*.))
               
 test_data_frame("apelsinid", columns = "kuupaev",
             undefined_msg = "Andmetabel `apelsinid` on kustutatud!!.",
@@ -285,8 +284,8 @@ test_function(name = "difftime",
               eq_condition = "equivalent",
               not_called_msg = "Viimases ülesandes kasuta  funktsiooni `difftime`.",
               args_not_specified_msg = c("Käsus `difftime` peab esimene argument olema ajavektor.","Käsus `difftime` peab teine argument ka olema ajavektor.",  
-              "Määra `difftime` käsus argumendi `units` väärtus."),
-              incorrect_msg =  c("Käsus `difftime` on esimesel kohal olev ajavektor vale.", "Käsus `difftime` on teisel kohal olev ajavektor vale.", "Oled `difftime` käsus argumendi `units` väärtuse valesti määranud."))
+              "Määra `difftime` käsus argumendi `units` väärtus `'weeks'`."),
+              incorrect_msg =  c("Käsus `difftime` on esimesel kohal olev ajavektor vale.", "Käsus `difftime` on teisel kohal olev ajavektor vale.", "Oled `difftime` käsus argumendi `units` väärtuse valesti määranud, ühikuks peab olema nädal."))
               
 
 test_object("nadalad", 
@@ -322,12 +321,12 @@ Töölaual on andmestik `andmed`, mis sisaldab infot patsientide haiglasse saabu
 Ülesannetes peab moodustama 2 alamandmestikku.
 
 `@instructions`
-- **Ülesanne 1** Kontrolli, kas andmestikus on vigaseid vaatlusi: ridu, kus patsient on haiglast lahkunud enne haiglasse saabumise kuupäeva. Vali selliste vaatluste read andmestikust ja omista muutujale `vead1`. Prindi tulemus ekraanile. 
-- **Ülesanne 2** Kontrolli, kas andmestikus on patsiente, kelle kohta pole teada nende haiglast lahkumise kuupäev. Vali selliste vaatluste read andmestikust ja omista muutujale `vead2`. Prindi tulemus ekraanile.
+- **Ülesanne 1:** Kontrolli, kas andmestikus on vigaseid vaatlusi: ridu, kus patsient on haiglast lahkunud enne haiglasse saabumise kuupäeva. Vali selliste vaatluste read andmestikust ja omista muutujale `vead1`. Prindi tulemus ekraanile. 
+- **Ülesanne 2:** Kontrolli, kas andmestikus on patsiente, kelle kohta pole teada nende haiglast lahkumise kuupäev. Vali selliste vaatluste read andmestikust ja omista muutujale `vead2`. Prindi tulemus ekraanile.
 
 `@hint`
 - Alamandestiku moodustamiseks võib kasutada käsku `subset` või konstruktsiooni `andmed[tingimus,]`. 
-- Arvesta, et `NA` väärtus võrdluses annab väärtuse `NA`.
+- Arvesta, et `NA` väärtus võrdluses (`==`) annab väärtuse `NA`. Meenuta, mida teeb funktsioon `is.na`.
 
 `@pre_exercise_code`
 ```{r}
