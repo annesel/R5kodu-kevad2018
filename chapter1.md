@@ -677,6 +677,7 @@ head(AB1)
 
 # Ülesanne 3: ühenda andmestikud
 AB2 <- ___ %>% _______(_____, _____)
+AB2 <- arrange(AB2, id)
 head(AB2)
 
 ```
@@ -699,6 +700,7 @@ head(AB1)
 
 # Ülesanne 3: ühenda andmestikud
 AB2 <- A1 %>% inner_join(B1, by = "id")
+AB2 <- arrange(AB2, id)
 head(AB2)
 
 ```
@@ -749,7 +751,7 @@ test_function(name = "semi_join",
              eq_condition = "equivalent",
              not_called_msg = "Pead teises ülesandes    kasutama funktsiooni `semi_join()`",
              args_not_specified_msg = paste("Käsus `semi_join()`  ", c("saadetakse esimene liidetav andmestik läbi aheldamisoperaatori", " tuleb märkida teine liidetav andmestik", "tuleb määrata võtmetunnus `by`", "." )),
-             incorrect_msg = paste("Muuda `semi_join()` käsus ", c("läbi aheldamise saadetav andmestik.", " teine liidetav andmestik. ", "argumendi `by` väärtus."))) 
+             incorrect_msg = paste("Muuda `semi_join()` käsus ", c("läbi aheldamise saadetav andmestik. Praegu on see vale.", " teine liidetav andmestik. See on praegu vale. ", "argumendi `by` väärtus."))) 
 
 
 test_data_frame("AB1",
@@ -774,7 +776,7 @@ test_function(name = "inner_join",
              eq_condition = "equivalent",
              not_called_msg = "Pead kolmandas ülesandes  kasutama  funktsiooni `inner_join()`.",
              args_not_specified_msg = paste("Käsus `inner_join()`  ", c("saadetakse esimene liidetav andmestik läbi aheldamisoperaatori", " tuleb märkida teine liidetav andmestik", "tuleb määrata võtmetunnus `by`", "." )),
-             incorrect_msg = paste("Muuda `inner_join()` käsus ", c("läbi aheldamise saadetav andmestik.", " teine liidetav andmestik. ", "argumendi `by` väärtus.")) )
+             incorrect_msg = paste("Muuda `inner_join()` käsus ", c("läbi aheldamise saadetav andmestik. Praegu on see vale.", " teine liidetav andmestik. Praegu on see vale.", "argumendi `by` väärtus.")) )
 ,
 test_function(name = "inner_join",
               args = c("by"),
@@ -792,7 +794,7 @@ test_data_frame("AB2",
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestikku `AB2` pole tekitatud!",
                 undefined_cols_msg = paste("Andmestikus `AB2` on mõni veerg puudu! "),
-                incorrect_msg = paste("Andmestikus `AB2` on mõni veerg valede väärtustega!"))
+                incorrect_msg = paste("Andmestikus `AB2` on midagi valesti!"))
                 
                 
  
