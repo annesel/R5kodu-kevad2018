@@ -647,7 +647,7 @@ Pakett **dplyr** on juba aktiveeritud.
 - **Ülesanne 3:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B` ning  kõik veerud mõlemast andmestikust. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
 
 `@hint`
-- Esimeses ülesandes kasuta faktortunnuste sõnedeks teisendamisel argumente `.predicate = is.factor` ja `.funs =as.character`.
+- Esimeses ülesandes kasuta faktortunnuste sõnedeks teisendamisel argumente `.predicate = is.factor` ja `.funs = as.character`.
 
 `@pre_exercise_code`
 ```{r}
