@@ -498,12 +498,12 @@ str(antropo)
 
 # Ülesanne 1: teisenda faktorid tavaliseks tekstiks
 _________ <-  __________ %>% mutate______(.predicate = __________, .funs = __________)
-
+str(mass_char)
 
 # Ülesanne 2: teisenda ühikud
 uus_funktsioon <- function(_____) ____________
 antropo_cm_kg <- _______  ____  mutate______(.vars = vars(-SEX), .funs = uus_funktsioon)
-
+head(antropo_cm_kg)
 ```
 
 `@solution`
@@ -514,12 +514,12 @@ str(antropo)
 
 # Ülesanne 1: teisenda faktorid tavaliseks tekstiks
 mass_char <-  mass %>% mutate_if(.predicate = is.factor, .funs = as.character)
-
+str(mass_char)
 
 # Ülesanne 2: teisenda ühikud
 uus_funktsioon <- function(x) x/10
 antropo_cm_kg <- antropo %>% mutate_at(.vars = vars(-SEX), .funs = uus_funktsioon)
-
+head(antropo_cm_kg)
 
 ```
 
