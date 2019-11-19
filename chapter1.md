@@ -474,7 +474,7 @@ Aktiveeritud on pakett **dplyr**.
 
 `@instructions`
 - **Ülesanne 1:**  Teisenda andmestikus `mass` kõik tunnused, mis on tüüpi `factor` tavaliseks tekstiks ehk tüüpi `character`. Selleks täienda antud koodi sobivalt. Teisendatud tunnustega andmestik nimeta `mass_char`. Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
-- **Ülesanne 2_** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`.
+- **Ülesanne 2:** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`.
 
 `@hint`
 - Selleks, et kontrollida, kas tunnus on faktortüüpi, saab kasutada funktsiooni `is.factor()`.
@@ -647,8 +647,7 @@ Pakett **dplyr** on juba aktiveeritud.
 - **Ülesanne 3:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B` ning  kõik veerud mõlemast andmestikust. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
 
 `@hint`
--  Esimeses ülesandes kasuta faktortunnuste sõnedeks teisendamisel argumente `.predicate = is.factor` ja `.funs =as.character`.
--
+- Esimeses ülesandes kasuta faktortunnuste sõnedeks teisendamisel argumente `.predicate = is.factor` ja `.funs =as.character`.
 
 `@pre_exercise_code`
 ```{r}
