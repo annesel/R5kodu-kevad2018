@@ -755,11 +755,11 @@ test_function(name = "semi_join",
 
 
 test_data_frame("AB1",
-                columns = NULL,
+                columns = c( 'd', 'grupp', 'hinnang1', 'hinnang10', 'hinnang100', 'hinnang11', 'hinnang16', 'hinnang2', 'hinnang22', 'hinnang26', 'hinnang28', 'hinnang37', 'hinnang49', 'hinnang5', 'hinnang54', 'hinnang57', 'hinnang58', 'hinnang62', 'hinnang63', 'hinnang64', 'hinnang65', 'hinnang71', 'hinnang73', 'hinnang76', 'hinnang77', 'hinnang78', 'hinnang79', 'hinnang80', 'hinnang82', 'hinnang86', 'hinnang90', 'hinnang99', 'taust1', 'taust2', 'taust3', 'taust4', 'taust5', 'taust6', 'taust7', 'test101', 'test105', 'test106', 'test109', 'test111', 'test113', 'test117', 'test120', 'test121', 'test123', 'test124', 'test127', 'test128', 'test130', 'test135', 'test136', 'test137', 'test138', 'test141', 'test143', 'test146', 'test151', 'test154', 'test156', 'test157', 'test158', 'test163', 'test164', 'test165', 'test175', 'test177', 'test178', 'test179', 'test180', 'test182', 'test183', 'test185', 'test190', 'test192', 'test195' ),
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestikku `AB1` pole tekitatud!",
                 undefined_cols_msg = paste("Andmestikus `AB1` on mõni veerg puudu! "),
-                incorrect_msg = paste("Andmestikus `AB1` on mõni veerg valede väärtustega!"))
+                incorrect_msg = paste("Andmestik  `AB1` ei vasta ülesandes nõutule!"))
                 
                 
  
@@ -790,7 +790,7 @@ test_function(name = "inner_join",
 
 
 test_data_frame("AB2",
-                columns = NULL,
+                columns = c('id', 'sugu', 'vanus', 'elukoht', 'visiit', 'kasv', 'kaal', 'sirutus', 'grupp', 'hinnang1', 'hinnang10', 'hinnang100', 'hinnang11', 'hinnang16', 'hinnang2', 'hinnang22', 'hinnang26', 'hinnang28', 'hinnang37', 'hinnang49', 'hinnang5', 'hinnang54', 'hinnang57', 'hinnang58', 'hinnang62', 'hinnang63', 'hinnang64', 'hinnang65', 'hinnang71', 'hinnang73', 'hinnang76', 'hinnang77', 'hinnang78', 'hinnang79', 'hinnang80', 'hinnang82', 'hinnang86', 'hinnang90', 'hinnang99', 'taust1', 'taust2', 'taust3', 'taust4', 'taust5', 'taust6', 'taust7', 'test101', 'test105', 'test106', 'test109', 'test111', 'test113', 'test117', 'test120', 'test121', 'test123', 'test124', 'test127', 'test128', 'test130', 'test135', 'test136', 'test137', 'test138', 'test141', 'test143', 'test146', 'test151', 'test154', 'test156', 'test157', 'test158', 'test163', 'test164', 'test165', 'test175', 'test177', 'test178', 'test179', 'test180', 'test182', 'test183', 'test185', 'test190', 'test192', 'test195'),
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestikku `AB2` pole tekitatud!",
                 undefined_cols_msg = paste("Andmestikus `AB2` on mõni veerg puudu! "),
