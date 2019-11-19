@@ -644,7 +644,7 @@ Pakett **dplyr** on juba aktiveeritud.
 
 - **Ülesanne 2:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB1`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kelle kohta on olemas info mõlemas andmestikus, kuid veergudest ainult need, mis on olemas andmestikus `B`. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
 
-- **Ülesanne 3:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B` ning  kõik veerud mõlemast andmestikust. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
+- **Ülesanne 3:** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B` ning  kõik veerud mõlemast andmestikust. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit. Viimase sammuna sorteeri ühendatud andmestik id-koodi põhjal.
 
 `@hint`
 - Esimeses ülesandes kasuta faktortunnuste sõnedeks teisendamisel argumente `.predicate = is.factor` ja `.funs = as.character`.
@@ -676,8 +676,7 @@ AB1 <- ___ %>% _______(_____, _____)
 str(AB1)
 
 # Ülesanne 3: ühenda andmestikud
-AB2 <- ___ %>% _______(_____, _____)
-AB2 <- arrange(AB2, id)
+AB2 <- ___ %>% _______(_____, _____) %>% arrange(id)
 str(AB2)
 
 ```
@@ -699,8 +698,7 @@ AB1 <- B1 %>% semi_join(A1, by = "id")
 str(AB1)
 
 # Ülesanne 3: ühenda andmestikud
-AB2 <- A1 %>% inner_join(B1, by = "id")
-AB2 <- arrange(AB2, id)
+AB2 <- A1 %>% inner_join(B1, by = "id") %>% arrange(id)
 str(AB2)
 
 ```
