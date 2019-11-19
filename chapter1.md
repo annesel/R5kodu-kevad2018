@@ -673,10 +673,11 @@ B1 <- B %>% mutate_if(_____, _____)
 
 # Ülesanne 2: ühenda andmestikud
 AB1 <- ___ %>% _______(_____, _____)
+head(AB1)
 
 # Ülesanne 3: ühenda andmestikud
 AB2 <- ___ %>% _______(_____, _____)
-
+head(AB2)
 
 ```
 
@@ -694,10 +695,11 @@ B1 <- B %>% mutate_if(is.factor, as.character)
 
 # Ülesanne 2: ühenda andmestikud
 AB1 <- B1 %>% semi_join(A1, by = "id")
+head(AB1)
 
 # Ülesanne 3: ühenda andmestikud
 AB2 <- A1 %>% inner_join(B1, by = "id")
-
+head(AB2)
 
 ```
 
